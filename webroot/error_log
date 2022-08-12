@@ -1,0 +1,2 @@
+[11-Aug-2022 14:14:46 UTC] PHP Fatal error:  Declaration of App\Controller\ReportsController::initialize() must be compatible with App\Controller\AppController::initialize(): void in /home2/premierh/payroll.premierhotelibadan.com/src/Controller/ReportsController.php on line 19
+[11-Aug-2022 14:16:01 UTC] PHP Fatal error:  Declaration of App\Controller\ReportsController::initialize() must be compatible with App\Controller\AppController::initialize(): void in /home2/premierh/payroll.premierhotelibadan.com/src/Controller/ReportsController.php on line 19

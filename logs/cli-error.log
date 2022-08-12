@@ -1,0 +1,116 @@
+2022-08-05 20:30:45 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.bakes' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.bakes' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:328
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:331
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+2022-08-05 21:24:11 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.comapnies' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.comapnies' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:328
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:331
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+2022-08-05 21:25:41 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.other_deparments' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.other_deparments' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:328
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:331
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+2022-08-08 20:51:38 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.profile' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'premierh_cake110.profile' doesn't exist in /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:328
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Connection.php:331
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/bake/src/Command/AllCommand.php:115
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/BaseCommand.php:189
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
+
