@@ -129,7 +129,7 @@ return [
         ],
         //all roles allowed to Pages/display
         [
-            'role' =>'*',
+            'role' =>'user',
             'prefix' => '*',
             'controller' => '*',
             'action' => '*',

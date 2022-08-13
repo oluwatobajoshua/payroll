@@ -89,13 +89,15 @@ class EmployeesController extends AppController
         $employee = $this->Employees->get($id, [
             'contain' => [],
         ]);
+
+
         
-        $childCount         = count($employee->children_details) ? count($employee->children_details) : 0;
-        $nextOfKinCount     = count($employee->next_of_kins) ? count($employee->next_of_kins) : 1;
-        $educationCount     = count($employee->educations) ? count($employee->educations) : 1;
-        $workCount          = count($employee->work_details) ? count($employee->work_details) : 1;
-        $addressCount       = count($employee->addresses) ? count($employee->addresses) : 1;
-        $otherDepartmentCount = count($employee->other_departments) ? count($employee->other_departments) : 1;
+        $childCount         = $employee->children_details ? count($employee->children_details) : 0;
+        $nextOfKinCount     = $employee->next_of_kins ? count($employee->next_of_kins) : 1;
+        $educationCount     = $employee->educations ? count($employee->educations) : 1;
+        $workCount          = $employee->work_details ? count($employee->work_details) : 1;
+        $addressCount       = $employee->addresses ? count($employee->addresses) : 1;
+        $otherDepartmentCount = $employee->other_departments ? count($employee->other_departments) : 1;
         
         if ($this->request->is(['patch', 'post', 'put'])) {
             $employee = $this->Employees->patchEntity($employee, $this->request->getData());
