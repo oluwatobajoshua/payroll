@@ -44,8 +44,13 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'premierh_cake110',
-            'password' => 'F9Np3S[)60',
+            // 'username' => 'premierh_cake110',
+            // 'password' => 'F9Np3S[)60',
+
+            // 'database' => 'premierh_cake110',
+
+            'username' => 'root',
+            'password' => '',
 
             'database' => 'premierh_cake110',
             /*
