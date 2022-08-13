@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-$this->assign('title', __('Employees'));
+$this->assign('title', __('Employees New'));
 $this->Breadcrumbs->add([
     ['title' => 'Home', 'url' => '/'],
     ['title' => 'List Employees'],
