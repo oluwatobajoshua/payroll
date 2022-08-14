@@ -58,9 +58,48 @@ class EmployeesController extends AppController
      */
     public function add()
     {
+        $userId = $this->Authentication->getIdentity()->getIdentifier();
+        // debug($userId);
         $employee = $this->Employees->newEmptyEntity();
+
+        $childCount         =  0;
+        $nextOfKinCount     =  1;
+        $educationCount     =  1;
+        $workCount          =  1;
+        $addressCount       =  1;
+        $otherDepartmentCount =  1;
+
+        if ($this->request->is('post') && $this->request->getData('educationCount')) {
+            $educationCount = $this->request->getData('educationCount');
+            //debug($this->request->getData());
+            //exit;
+        }
+        if ($this->request->is('post') && $this->request->getData('workCount')) {
+            $workCount = $this->request->getData('workCount');
+            //debug($this->request->getData());s
+            //exit;
+        }
+        if ($this->request->is('post') && $this->request->getData('childCount')) {
+            $childCount = $this->request->getData('childCount');
+            //debug($this->request->getData());s
+            //exit;
+        }
+        if ($this->request->is('post') && $this->request->getData('addressCount')) {
+            $addressCount = $this->request->getData('addressCount');
+            //debug($this->request->getData());s
+            //exit;
+        }
+
         if ($this->request->is('post')) {
+            // debug($this->request->getData());
+            // exit;
+        }
+
+        if ($this->request->is('post') && !$this->request->getData('workCount') && !$this->request->getData('childCount') && !$this->request->getData('educationCount')) {
             $employee = $this->Employees->patchEntity($employee, $this->request->getData());
+            $employee->user_id  = $userId;
+            // debug($employee);exit;
+
             if ($this->Employees->save($employee)) {
                 $this->Flash->success(__('The employee has been saved.'));
 
@@ -68,20 +107,57 @@ class EmployeesController extends AppController
             }
             $this->Flash->error(__('The employee could not be saved. Please, try again.'));
         }
-        $branches = $this->Employees->Branches->find('list', ['limit' => 200])->all();
-        $grades = $this->Employees->Grades->find('list', ['limit' => 200])->all();
-        $sections = $this->Employees->Sections->find('list', ['limit' => 200])->all();
-        $cadres = $this->Employees->Cadres->find('list', ['limit' => 200])->all();
-        $banks = $this->Employees->Banks->find('list', ['limit' => 200])->all();
-        $genders = $this->Employees->Genders->find('list', ['limit' => 200])->all();
-        $religions = $this->Employees->Religions->find('list', ['limit' => 200])->all();
-        $locals = $this->Employees->Locals->find('list', ['limit' => 200])->all();
-        $physicalPostures = $this->Employees->PhysicalPostures->find('list', ['limit' => 200])->all();
-        $maritalStatuses = $this->Employees->MaritalStatuses->find('list', ['limit' => 200])->all();
-        $highestEducations = $this->Employees->HighestEducations->find('list', ['limit' => 200])->all();
-        $designations = $this->Employees->Designations->find('list', ['limit' => 200])->all();
-        $statuses = $this->Employees->Statuses->find('list', ['limit' => 200])->all();
-        $this->set(compact('employee', 'branches', 'grades', 'sections', 'cadres', 'banks', 'genders', 'religions', 'locals', 'physicalPostures', 'maritalStatuses', 'highestEducations', 'designations', 'statuses'));
+        $maritalStatuses = $this->Employees->MaritalStatuses->find('list', ['limit' => 200]);
+        $physicalPostures = $this->Employees->PhysicalPostures->find('list', ['limit' => 200]);
+        $genders = $this->Employees->Genders->find('list', ['limit' => 200]);
+        $banks = $this->Employees->Banks->find('list', ['limit' => 200]);
+        $religions = $this->Employees->Religions->find('list', ['limit' => 200]);
+        $locals = $this->Employees->Locals->find('list');
+        $states = $this->Employees->States->find('list', ['limit' => 200, 'order' => 'name']);
+        $highestEducations = $this->Employees->HighestEducations->find('list', ['limit' => 200, 'order' => 'name']);
+        $serviceCharges = $this->Employees->ServiceCharges->find('list', ['limit' => 200]);
+        $sections = $this->Employees->Sections->find('list', ['limit' => 200, 'order' => 'name']);
+        
+        $grades = $this->Employees->Grades->find('list', ['limit' => 200]);
+        $designations = $this->Employees->Designations->find('list', ['limit' => 200, 'order' => 'name']);
+        $branches = $this->Employees->Branches->find('list', ['limit' => 200, 'order' => 'name']);
+        $statuses = $this->Employees->Statuses->find('list', ['limit' => 200, 'order' => 'name']);
+        $cadres = $this->Employees->Cadres->find('list', ['limit' => 200]);
+        $relationships = $this->Employees->NextOfKins->Relationships->find('list', ['limit' => 200, 'order' => 'name']);
+        $addressTypes = $this->Employees->Addresses->AddressTypes->find('list', ['limit' => 200]);
+        $users = $this->Employees->Users->find('list', ['limit' => 200]);
+        $viewVars = [
+            'states',
+            'physicalPostures',
+            'genders',
+            'maritalStatuses',
+            'users',
+            'religions',
+            'highestEducations',
+            'locals',
+            'branches',
+            'employee',
+            'banks',
+            'serviceCharges',
+            'sections',
+            'grades',
+            'designations',
+            'statuses',
+            'cadres',
+            'relationships',
+            'addressTypes',
+            'childCount',
+            'nextOfKinCount',
+            'educationCount',
+            'workCount',
+            'addressCount',
+            'otherDepartmentCount'
+        ];
+        $this->set(compact($viewVars));
+        if ($this->request->is('ajax')) {
+            return $this->response->withType('application/json')
+                ->withStringBody(json_encode([$viewVars]));
+        }
     }
 
     /**

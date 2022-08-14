@@ -51,7 +51,7 @@ $this->Breadcrumbs->add([
       echo $this->Form->control('acct_no');
       echo $this->Form->control('service_charge_bank',['options' => $serviceCharges]);
       echo $this->Form->control('service_charge_number');      
-      echo $this->Form->control('contribution',['rows' => 2]);
+      echo $this->Form->control('contribution');
     ?>
     </div>
   </div>

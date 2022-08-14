@@ -31,11 +31,11 @@ class UsersListener implements EventListenerInterface
         //$this->loadModel('SomeOptionalUserLogs')->newLogin($user);
 
         //If you want to use a custom redirect
-        $event->setResult([
-            'plugin' => false,
-            'controller' => 'Employees',
-            'action' => 'view',
-            $user->id
-        ]);
+        // $event->setResult([
+        //     'plugin' => false,
+        //     'controller' => 'Employees',
+        //     'action' => 'view',
+        //     $user->id
+        // ]);
     }
 }

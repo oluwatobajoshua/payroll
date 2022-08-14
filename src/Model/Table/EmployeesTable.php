@@ -186,12 +186,12 @@ class EmployeesTable extends Table
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 19)
-            ->allowEmptyString('first_name');
+            ->notEmptyString('first_name','First name is required');
 
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 14)
-            ->allowEmptyString('last_name');
+            ->notEmptyString('last_name','Last name is required');
 
         $validator
             ->scalar('phone')
@@ -327,8 +327,9 @@ class EmployeesTable extends Table
 
         $validator
             ->integer('status_id')
-            ->requirePresence('status_id', 'create')
-            ->notEmptyString('status_id');
+            // ->requirePresence('status_id', 'create')
+            // ->notEmptyString('status_id')
+            ;
 
         $validator
             ->date('date_of_birth')

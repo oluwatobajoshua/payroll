@@ -114,3 +114,75 @@ Stack Trace:
 - /home2/premierh/payroll.premierhotelibadan.com/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
 - /home2/premierh/payroll.premierhotelibadan.com/bin/cake.php:12
 
+2022-08-14 17:13:55 error: [InvalidArgumentException] Cannot convert value of type `boolean` to integer in C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php on line 40
+Stack Trace:
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php:60
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php:39
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php:96
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\ValueBinder.php:148
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:358
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:362
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Query.php:254
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:2083
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1976
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1875
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1562
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:708
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1563
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1876
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:346
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:116
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\Shell.php:500
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:352
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:169
+- C:\xampp\htdocs\cake4\bin\cake.php:12
+
+2022-08-14 17:14:02 error: [InvalidArgumentException] Cannot convert value of type `boolean` to integer in C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php on line 40
+Stack Trace:
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php:60
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php:39
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php:96
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\ValueBinder.php:148
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:358
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:362
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Query.php:254
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:2083
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1976
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1875
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1562
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:708
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1563
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1876
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:346
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:116
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\Shell.php:500
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:352
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:169
+- C:\xampp\htdocs\cake4\bin\cake.php:12
+
+2022-08-14 17:14:08 error: [InvalidArgumentException] Cannot convert value of type `boolean` to integer in C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php on line 40
+Stack Trace:
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Type\IntegerType.php:60
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php:39
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php:96
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\ValueBinder.php:148
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:358
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php:70
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:362
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Query.php:254
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:2083
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1976
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1875
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1562
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Database\Connection.php:708
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1563
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\ORM\Table.php:1876
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:346
+- C:\xampp\htdocs\cake4\vendor\cakedc\users\src\Shell\UsersShell.php:116
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\Shell.php:500
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:352
+- C:\xampp\htdocs\cake4\vendor\cakephp\cakephp\src\Console\CommandRunner.php:169
+- C:\xampp\htdocs\cake4\bin\cake.php:12
+

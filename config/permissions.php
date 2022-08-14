@@ -129,11 +129,11 @@ return [
         ],
         //all roles allowed to Pages/display
         [
-            'role' =>'user',
+            'role' =>'*',
             'prefix' => '*',
             'controller' => '*',
             'action' => '*',
-            'bypassAuth' => false,
+            // 'bypassAuth' => true,
         ],
         [
             'role' => '*',

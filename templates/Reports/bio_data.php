@@ -38,7 +38,6 @@ use Cake\I18n\FrozenTime;
             ?>
           </div>
         </div>
-
         <?= $this->Form->end() ?>
 
         <div class="invoice p-3 mb-3">

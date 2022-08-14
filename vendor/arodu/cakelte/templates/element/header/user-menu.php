@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
     <!-- User image -->
-    <li class="user-header bg-primary">
+    <li class="user-header bg-success">
       <?= $this->Html->image('CakeLte./AdminLTE/dist/img/premierhotel_logo.jpeg', array('class' => 'user-image img-circle elevation-2', 'alt' => 'User Image')) ?>
 
       <p>

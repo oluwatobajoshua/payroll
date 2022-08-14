@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -43,6 +44,9 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+
+        $authenticationConfig = Configure::read('Auth.AuthenticationComponent');
+        $this->loadComponent('Authentication.Authentication', $authenticationConfig);
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
