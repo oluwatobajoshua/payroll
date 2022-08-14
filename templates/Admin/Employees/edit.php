@@ -59,7 +59,7 @@ $this->Breadcrumbs->add([
       echo $this->Form->control('leave_allowance');
       echo $this->Form->control('bank_id', ['options' => $banks]);
       echo $this->Form->control('acct_no');
-      echo $this->Form->control('service_charge_bank');
+      echo $this->Form->control('service_charge_bank',['options' => $serviceCharges]);
       echo $this->Form->control('service_charge_number');
       echo $this->Form->control('housing_upfront');
       echo $this->Form->control('domestic_allowance');

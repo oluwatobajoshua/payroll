@@ -150,3 +150,46 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-footer -->
 </div>
+
+<?php $this->start('scriptBottom'); ?>
+<script>
+  $(function() {
+
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+
+    // stockTotal();
+
+  })
+
+  // function stockTotal() {
+  //   var productUnit1 = $('#stock-details-0-product-unit-id option:selected').text();
+  //   var productUnit = productUnit1.split("-")[0];
+  //   var qty = $('#qty').val();
+  //   var liters = productUnit * qty;
+  //   var quantity = $('#stock-details-0-quantity').val(liters);
+  //   var fee = parseFloat($('#fee').val())
+  //   var supplyAmount = parseFloat($('#supply-amount').val())
+  //   var total = (qty * supplyAmount) + fee;
+  //   $('#amount').val(total.toFixed(2));
+  //   var costPrice = total / liters;
+  //   $('#stock-details-0-cost-price').val(costPrice.toFixed(2));
+  //   //console.log(costPrice);
+  //   /*
+  //   var qty = parseFloat($('#order-details-' + i + '-qty').val())
+  //   var unitPrice = parseFloat($('#order-details-' + i + '-unit-price').val())
+  //   var discount1 = $('#order-details-' + i + '-discount-id option:selected').text();
+  //   var discount = discount1.replace("%", " ");
+  //   var orderItemTotal = qty * unitPrice
+  //   var orderItemDiscount = orderItemTotal * (discount / 100)
+  //   var total = orderItemTotal - orderItemDiscount
+  //   $('#order-details-' + i + '-total').val(total.toFixed(2))
+  //   $('#total').val(stockTotal.toFixed(2));
+  //   */
+  // }
+</script>
+<?php $this->end(); ?>

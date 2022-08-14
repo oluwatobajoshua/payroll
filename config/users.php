@@ -45,7 +45,7 @@ $config = [
             // determines if the user should include email
             'required' => true,
             // determines if registration workflow includes email validation
-            'validate' => true,
+            'validate' => false,
         ],
         'Registration' => [
             // determines if the register is enabled
@@ -57,9 +57,9 @@ $config = [
             //ensure user is active (confirmed email) to reset his password
             'ensureActive' => false,
             // role field in the Users table
-            'role_field' => 'role_id',
+            // 'role_field' => 'role_id',
             // default role name used in registration
-            'defaultRole' => 1,
+            'defaultRole' => 'user',
             // show verbose error to users
             'showVerboseError' => false,
         ],

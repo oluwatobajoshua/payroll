@@ -91,6 +91,19 @@
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
     <!-- AdminLTE App -->
     <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
+    
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables/jquery.dataTables.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/jszip/jszip.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/pdfmake/pdfmake.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/pdfmake/vfs_fonts.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') ?>
+    <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>
 
     <?= $this->element('layout/script') ?>
     <?= $this->fetch('script') ?>

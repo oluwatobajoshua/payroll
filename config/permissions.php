@@ -133,7 +133,7 @@ return [
             'prefix' => '*',
             'controller' => '*',
             'action' => '*',
-            'bypassAuth' => true,
+            'bypassAuth' => false,
         ],
         [
             'role' => '*',
