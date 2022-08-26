@@ -26,16 +26,22 @@ class UsersListener implements EventListenerInterface
     {
         $user = $event->getData('user');
 
-        // debug($user);
+        // debug($user);exit;
         //your custom logic
         //$this->loadModel('SomeOptionalUserLogs')->newLogin($user);
 
+        $employee = \Cake\ORM\TableRegistry::get('Employees')->find()->where(['user_id' => $user['id']])->first();
+
+        // debug($employee->id); exit;
+
         //If you want to use a custom redirect
-        // $event->setResult([
-        //     'plugin' => false,
-        //     'controller' => 'Employees',
-        //     'action' => 'view',
-        //     $user->id
-        // ]);
+        if($user->role != 'admin'){
+            $event->setResult([
+                'plugin' => false,
+                'controller' => 'Employees',
+                'action' => 'view',
+                $employee->id
+            ]);
+        }
     }
 }

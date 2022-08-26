@@ -1,4 +1,8 @@
 <?php
+
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
+use CakeDC\Auth\Rbac\Rules\Owner;
 /**
  * Copyright 2010 - 2019, Cake Development Corporation (https://www.cakedc.com)
  *
@@ -129,11 +133,15 @@ return [
         ],
         //all roles allowed to Pages/display
         [
-            'role' =>'*',
-            'prefix' => '*',
-            'controller' => '*',
-            'action' => '*',
-            // 'bypassAuth' => true,
+            'role' => 'user',
+            'controller' => 'Employees',
+            'action' => ['edit','view'],
+            // 'allowed' => true,
+            'allowed' => new \CakeDC\Auth\Rbac\Rules\Owner([
+                'table' => 'Employees',
+                'id' => 'id',
+                'ownerForeignKey' => 'user_id'
+            ]),
         ],
         [
             'role' => '*',

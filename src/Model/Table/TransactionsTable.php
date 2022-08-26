@@ -164,11 +164,6 @@ class TransactionsTable extends Table
             ->allowEmptyString('union_due');
 
         $validator
-            ->numeric('tax_amount')
-            ->requirePresence('tax_amount', 'create')
-            ->notEmptyString('tax_amount');
-
-        $validator
             ->numeric('arrears')
             ->allowEmptyString('arrears');
 
@@ -218,6 +213,12 @@ class TransactionsTable extends Table
     {
         $rules->add($rules->existsIn('employee_id', 'Employees'), ['errorField' => 'employee_id']);
         $rules->add($rules->existsIn('company_id', 'Companies'), ['errorField' => 'company_id']);
+
+        //Disable double payment
+        $rules->add($rules->isUnique(
+            ['date', 'employee_id'],
+            'This month has already been processed.'
+        ));
 
         return $rules;
     }

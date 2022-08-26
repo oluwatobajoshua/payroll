@@ -13,6 +13,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php echo $this->Html->meta('csrfToken', $this->request->getAttribute('csrfToken')); ?>
+
     <title><?= $this->fetch('title') . ' | ' . strip_tags($this->CakeLte->getConfig('app-name')) ?></title>
 
     <?= $this->Html->meta('icon') ?>
@@ -61,12 +63,12 @@
             </div>
 
             <!-- Main content -->
-            <div class="content">
+            <section class="content">
                 <div class="container-fluid">
                     <?= $this->Flash->render() ?>
                     <?= $this->fetch('content') ?>
                 </div><!-- /.container-fluid -->
-            </div>
+            </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -90,8 +92,7 @@
     <!-- Bootstrap 4 -->
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
     <!-- AdminLTE App -->
-    <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
-    
+    <!-- DataTables  & Plugins -->
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables/jquery.dataTables.min.js') ?>
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>
@@ -104,9 +105,11 @@
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js') ?>
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') ?>
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>
-
-    <?= $this->element('layout/script') ?>
-    <?= $this->fetch('script') ?>
+    <!-- AdminLTE App -->
+    <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
+    <!-- <?= $this->element('layout/script') ?>
+    <?= $this->fetch('script') ?> -->
+    <?= $this->Html->script('CakeLte./AdminLTE/dist/js/payroll.js') ?>
 </body>
 
 </html>

@@ -19,7 +19,7 @@ class CompaniesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => [],
+            'contain' => ['Employees'],
         ];
         $companies = $this->paginate($this->Companies);
 

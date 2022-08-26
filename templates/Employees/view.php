@@ -393,7 +393,7 @@ $this->Breadcrumbs->add([
   </div>
 </div>
 
-<div class="related related-companies view card">
+<!-- <div class="related related-companies view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Companies') ?></h3>
     <div class="card-toolbox">
@@ -445,7 +445,7 @@ $this->Breadcrumbs->add([
       <?php } ?>
     </table>
   </div>
-</div>
+</div> -->
 
 <div class="related related-educations view card">
   <div class="card-header d-sm-flex">
@@ -665,7 +665,7 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Transactions') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Transactions' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Transactions' , 'action' => 'add',$employee->id], ['class' => 'btn btn-primary btn-sm']) ?>
       <?= $this->Html->link(__('List '), ['controller' => 'Transactions' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>

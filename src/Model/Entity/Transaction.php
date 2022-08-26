@@ -92,6 +92,7 @@ class Transaction extends Entity
         'personal_loan' => true,
         'ctcs' => true,
         'bro_cics' => true,
+        'staff_no' => true,
         'surcharge' => true,
         'employee' => true,
         'company' => true,

@@ -89,7 +89,7 @@ $this->Breadcrumbs->add([
           <th><?= __('Religion Id') ?></th>
           <th><?= __('Local Id') ?></th>
           <th><?= __('Home Town') ?></th>
-          <th><?= __('State Of Origin Id') ?></th>
+          <th><?= __('State Id') ?></th>
           <th><?= __('Physical Posture Id') ?></th>
           <th><?= __('Marital Status Id') ?></th>
           <th><?= __('Highest Education Id') ?></th>
@@ -164,7 +164,7 @@ $this->Breadcrumbs->add([
             <td><?= h($employees->religion_id) ?></td>
             <td><?= h($employees->local_id) ?></td>
             <td><?= h($employees->home_town) ?></td>
-            <td><?= h($employees->state_of_origin_id) ?></td>
+            <td><?= h($employees->state_id) ?></td>
             <td><?= h($employees->physical_posture_id) ?></td>
             <td><?= h($employees->marital_status_id) ?></td>
             <td><?= h($employees->highest_education_id) ?></td>

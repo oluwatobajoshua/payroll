@@ -45,7 +45,13 @@ class StatusesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->hasMany('Diaries', [
+            'foreignKey' => 'status_id',
+        ]);
         $this->hasMany('Employees', [
+            'foreignKey' => 'status_id',
+        ]);
+        $this->hasMany('Halls', [
             'foreignKey' => 'status_id',
         ]);
         $this->hasMany('Leaves', [

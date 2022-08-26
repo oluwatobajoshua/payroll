@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,9 +18,8 @@ class EmployeesController extends AppController
      */
     public function login()
     {
-        
     }
-    
+
     /**
      * Index method
      *
@@ -29,6 +29,7 @@ class EmployeesController extends AppController
     {
         $this->paginate = [
             'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses'],
+            'limit' => 1000
         ];
         $employees = $this->paginate($this->Employees);
 
@@ -45,7 +46,7 @@ class EmployeesController extends AppController
     public function view($id = null)
     {
         $employee = $this->Employees->get($id, [
-            'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions', 'WorkDetails'],
+            // 'contain' => ['States','Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions', 'WorkDetails'],
         ]);
 
         $this->set(compact('employee'));
@@ -117,7 +118,7 @@ class EmployeesController extends AppController
         $highestEducations = $this->Employees->HighestEducations->find('list', ['limit' => 200, 'order' => 'name']);
         $serviceCharges = $this->Employees->ServiceCharges->find('list', ['limit' => 200]);
         $sections = $this->Employees->Sections->find('list', ['limit' => 200, 'order' => 'name']);
-        
+
         $grades = $this->Employees->Grades->find('list', ['limit' => 200]);
         $designations = $this->Employees->Designations->find('list', ['limit' => 200, 'order' => 'name']);
         $branches = $this->Employees->Branches->find('list', ['limit' => 200, 'order' => 'name']);
@@ -169,11 +170,11 @@ class EmployeesController extends AppController
      */
     public function edit($id = null)
     {
-        
+
         // debug($this->Employees->Addresses->validator()->remove('name'));
         // $this->Employees->Addresses->validator()->remove('name');
         //debug($this->Auth->user('role_id'));
-        
+
         // debug($this->Employees->isAdmin);
 
         $employee = $this->Employees->get($id, [
@@ -230,7 +231,7 @@ class EmployeesController extends AppController
         $highestEducations = $this->Employees->HighestEducations->find('list', ['limit' => 200, 'order' => 'name']);
         $serviceCharges = $this->Employees->ServiceCharges->find('list', ['limit' => 200]);
         $sections = $this->Employees->Sections->find('list', ['limit' => 200, 'order' => 'name']);
-        
+
         $grades = $this->Employees->Grades->find('list', ['limit' => 200]);
         $designations = $this->Employees->Designations->find('list', ['limit' => 200, 'order' => 'name']);
         $branches = $this->Employees->Branches->find('list', ['limit' => 200, 'order' => 'name']);
@@ -291,5 +292,25 @@ class EmployeesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function ajax()
+    {
+        $this->autoRender = false;
+        $stateId = $this->request->getData('data');
+        $locals = $this->Employees->Locals->find()->where(['Locals.state_id' => $stateId])->toArray();
+        $json_data = json_encode($locals);
+        $response = $this->response->withType('json')->withStringBody($json_data);
+        return $response;
+    }
+
+    public function employee()
+    {
+        $this->autoRender = false;
+        $employeeId = $this->request->getData('data');
+        $employee = $this->Employees->get($employeeId, ['contain' => ['Cadres']]);
+        $json_data = json_encode($employee);
+        $response = $this->response->withType('json')->withStringBody($json_data);
+        return $response;
     }
 }

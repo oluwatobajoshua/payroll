@@ -23,6 +23,7 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
 
 return static function (RouteBuilder $routes) {
     /*
@@ -45,6 +46,13 @@ return static function (RouteBuilder $routes) {
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->scope('/', function (RouteBuilder $builder) {
+
+        $builder->setExtensions(['json','xml']);
+        //$routes->resources('Employees');
+        // Register scoped middleware for in scopes.
+        $builder->registerMiddleware('csrf', new CsrfProtectionMiddleware([
+        'httponly' => true
+        ]));
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',
          * its action called 'display', and we pass a param to select the view file

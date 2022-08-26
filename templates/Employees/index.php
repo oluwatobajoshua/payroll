@@ -18,17 +18,17 @@ $this->Breadcrumbs->add([
         <h2 class="card-title">
             <!-- -->
         </h2>
-        <div class="card-toolbox">
+        <!-- <div class="card-toolbox">
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
                 'class' => 'form-control-sm',
             ]); ?>
             <?= $this->Html->link(__('New Employee'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-        </div>
+        </div> -->
     </div>
     <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+    <div class="card-body">
+        <table id="example1" class="table table-hover text-nowrap">
             <thead>
               <tr>
                 <th scope="col"><?= $this->Paginator->sort('Id') ?></th>
@@ -74,7 +74,7 @@ $this->Breadcrumbs->add([
                   <th scope="col"><?= $this->Paginator->sort('salary_advance_inst') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('drivers_allowance') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('bro_HCICS') ?></th>-->
-                <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
+                <th scope="col" class="actions text-center no-print"><?= __('Actions') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -124,7 +124,7 @@ $this->Breadcrumbs->add([
                   <td><?= $this->Number->format($employee->salary_advance_inst) ?></td>
                   <td><?= $this->Number->format($employee->drivers_allowance) ?></td>
                   <td><?= $this->Number->format($employee->bro_HCICS) ?></td>-->
-                  <td class="actions text-right">
+                  <td class="actions text-right no-print">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->name_desc), 'class' => 'btn btn-xs btn-outline-danger', 'escape' => false]) ?>
@@ -136,7 +136,7 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-body -->
 
-    <div class="card-footer d-md-flex paginator">
+    <!-- <div class="card-footer d-md-flex paginator">
         <div class="mr-auto" style="font-size:.8rem">
             <?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?>
         </div>
@@ -147,7 +147,7 @@ $this->Breadcrumbs->add([
             <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
             <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
         </ul>
-    </div>
+    </div> -->
     <!-- /.card-footer -->
 </div>
 
