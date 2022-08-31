@@ -125,7 +125,7 @@ class ServiceChargesController extends AppController
                         $trans->ilaya_xmas_bonus = $serviceCharge->ilaya_xmas_bonus;
                         $trans->end_of_year_bonus = $serviceCharge->end_of_year_bonus;
                         $trans->arrears = $serviceCharge->arrears;
-                        //save trans 
+                        //save trans git
                         $this->ServiceCharges->Grades->Employees->Transactions->save($trans);
                     }
                 }
