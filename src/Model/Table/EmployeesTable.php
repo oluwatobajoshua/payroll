@@ -34,6 +34,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\NextOfKinsTable&\Cake\ORM\Association\HasMany $NextOfKins
  * @property \App\Model\Table\OtherDepartmentsTable&\Cake\ORM\Association\HasMany $OtherDepartments
  * @property \App\Model\Table\TransactionsTable&\Cake\ORM\Association\HasMany $Transactions
+ * @property \App\Model\Table\Users1Table&\Cake\ORM\Association\HasMany $Users1
  * @property \App\Model\Table\WorkDetailsTable&\Cake\ORM\Association\HasMany $WorkDetails
  *
  * @method \App\Model\Entity\Employee newEmptyEntity()
@@ -65,18 +66,10 @@ class EmployeesTable extends Table
         parent::initialize($config);
 
         $this->setTable('employees');
-        $this->setDisplayField('full_name');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-        
-        $this->belongsTo(
-            'ServiceCharges', [
-            'className' => 'Banks',
-            'foreignKey' => 'service_charge_bank',
-            'joinType' => 'INNER'
-            ]
-        );
 
         $this->belongsTo('Branches', [
             'foreignKey' => 'branch_id',
@@ -87,15 +80,17 @@ class EmployeesTable extends Table
         $this->belongsTo('Sections', [
             'foreignKey' => 'section_id',
         ]);
-        $this->belongsTo('Sections', [
-            'foreignKey' => 'section_id',
-        ]);
         $this->belongsTo('Cadres', [
             'foreignKey' => 'cadre_id',
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('Banks', [
             'foreignKey' => 'bank_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('ServiceCharges', [
+            'className' => 'Banks',
+            'foreignKey' => 'service_charge_id',
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('Genders', [
@@ -136,7 +131,7 @@ class EmployeesTable extends Table
         $this->belongsTo('Users', [
             'className' => 'CakeDC/Users.Users',
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER',
+            'joinType' => 'LEFT',
         ]);
         $this->hasMany('Addresses', [
             'foreignKey' => 'employee_id',
@@ -160,6 +155,9 @@ class EmployeesTable extends Table
             'foreignKey' => 'employee_id',
         ]);
         $this->hasMany('Transactions', [
+            'foreignKey' => 'employee_id',
+        ]);
+        $this->hasMany('Users1', [
             'foreignKey' => 'employee_id',
         ]);
         $this->hasMany('WorkDetails', [
@@ -186,12 +184,12 @@ class EmployeesTable extends Table
         $validator
             ->scalar('first_name')
             ->maxLength('first_name', 19)
-            ->notEmptyString('first_name','First name is required');
+            ->allowEmptyString('first_name');
 
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 14)
-            ->notEmptyString('last_name','Last name is required');
+            ->allowEmptyString('last_name');
 
         $validator
             ->scalar('phone')
@@ -327,9 +325,8 @@ class EmployeesTable extends Table
 
         $validator
             ->integer('status_id')
-            // ->requirePresence('status_id', 'create')
-            // ->notEmptyString('status_id')
-            ;
+            ->requirePresence('status_id', 'create')
+            ->notEmptyString('status_id');
 
         $validator
             ->date('date_of_birth')
@@ -442,8 +439,7 @@ class EmployeesTable extends Table
 
         $validator
             ->integer('user_id')
-            ->requirePresence('user_id', 'create')
-            ->notEmptyString('user_id');
+            ->allowEmptyString('user_id');
 
         $validator
             ->scalar('contribution')
@@ -476,7 +472,7 @@ class EmployeesTable extends Table
         $rules->add($rules->existsIn('designation_id', 'Designations'), ['errorField' => 'designation_id']);
         $rules->add($rules->existsIn('status_id', 'Statuses'), ['errorField' => 'status_id']);
         $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
-        
+
         $rules->add($rules->isUnique(
             ['staff_no'],
             'This staff No has already been used.'

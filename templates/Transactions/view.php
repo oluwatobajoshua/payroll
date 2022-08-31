@@ -23,7 +23,7 @@ $this->Breadcrumbs->add([
     <table class="table table-hover text-nowrap">
         <tr>
             <th><?= __('Employee') ?></th>
-            <td><?= $transaction->has('employee') ? $this->Html->link($transaction->employee->id, ['controller' => 'Employees', 'action' => 'view', $transaction->employee->id]) : '' ?></td>
+            <td><?= $transaction->has('employee') ? $this->Html->link($transaction->employee->full_name, ['controller' => 'Employees', 'action' => 'view', $transaction->employee->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Company') ?></th>

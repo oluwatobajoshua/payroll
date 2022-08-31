@@ -1,6 +1,9 @@
 <?php
 
 use Cake\I18n\FrozenTime;
+
+// debug($sections->all());
+
 ?>
 <style>
   td {
@@ -117,7 +120,7 @@ use Cake\I18n\FrozenTime;
                       <td><?= h($employee->date_joined) ?></td>
                       <td><?= h($employee->date_joined->diff(new FrozenTime('-1 day'))->format('%y years %m months and %d days')) ?></td>
                       <td><?= h($section->name) ?></td>
-                      <td><?= h($employee->state->name) ?></td>
+                      <!-- <td><?= h($employee->state->name) ?></td> -->
                       <td><?= h($employee->local->name) ?></td>
                       <td><?= h($employee->designation->name) ?></td>
                       <td><?= h($employee->cadre->name) ?></td>

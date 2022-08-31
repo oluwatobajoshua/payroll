@@ -62,7 +62,7 @@ class TransactionsController extends AppController
 
         $this->paginate = [
             'contain' => ['Employees','Companies'],
-            'limit' => 10
+            'limit' => 20
         ];
         $transactions = $this->paginate($transactions);
 
@@ -96,48 +96,65 @@ class TransactionsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $company = $this->Transactions->Companies->get(1);
+
+        $trans = $this->Transactions->find()->count();
+
+        if(!$trans){
+            $employees = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections'])->where(['Employees.status_id' => 1]);        
+
+            foreach($employees as $employeed){
+                if($employeed->section){
+                    // debug($employeed);
+                $transaction = $this->Transactions->newEntity(['associated' => 'Employees']);            
+                $transaction->employee_id               = $employeed->id;
+                $transaction->company_id                = $company->id;
+                $transaction->section_id                = $employeed->section->id;
+                $transaction->date                      = new FrozenTime($company->date);
+                $transaction->basic_salary              = round(($employeed->salary/12),2);
+                $transaction->transport_allowance       = round($employeed->transport_allowance/12,2); 
+                $transaction->housing_allowance         = round($employeed->housing_allowance/12,2);
+                $transaction->utility_allowance         = round($employeed->utility_allowance/12,2);
+                $transaction->entertainment_allowance   = round($employeed->entertainment_allowance/12,2);
+                $transaction->medical_allowance         = round($employeed->medical_allowance/12,2); 
+                $transaction->other_allowance           = round($employeed->other_allowance/12,2);
+                $transaction->union_due                 = round($employeed->salary/12 *($employeed->cadre->union_due * 0.01),2);
+                $transaction->pension_deduction         = round((($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12)*($employeed->cadre->pension * 0.01),2);
+                $transaction->paye                      = round(($employeed->salary/12*($employeed->cadre->tax_due * 0.01)),2); 
+                $transaction->ctcs                      = round($employeed->whl_cics + $employeed->bro_cics,2);            
+                $transaction->personal_loan             = round((int)$employeed->pers_loan_rep,2); 
+                $transaction->gross                     = round(($transaction->basic_salary + $transaction->transport_allowance + + $transaction->leave_allowance + 
+                                                                $transaction->housing_allowance + $transaction->utility_allowance + $transaction->entertainment_allowance + 
+                                                                $transaction->medical_allowance + $transaction->arrears + $transaction->other_allowance),2);            
+                $transaction->total_deduction           = round(($transaction->paye + $transaction->personal_loan + $transaction->ctcs +
+                                                                $transaction->salary_advance + $transaction->surcharge + $transaction->union_due + 
+                                                                $transaction->pension_deduction + $transaction->bar_account + $transaction->other_deduction),2);
+                $transaction->net_pay                   = round(($transaction->gross - $transaction->total_deduction),2);
+                }
+
+                // debug($transaction);
+
+                if ($this->Transactions->save($transaction)) {                
+                    $this->Flash->success(__('The salary for {0} has been saved', $employeed->full_name));
+                }
                 
-        $employees = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections'])->where(['Employees.status_id' => 1]);        
-
-        foreach($employees as $employeed){
-            if($employeed->section){
-                // debug($employeed);
-            $transaction = $this->Transactions->newEntity(['associated' => 'Employees']);            
-            $transaction->employee_id               = $employeed->id;
-            $transaction->company_id                = $company->id;
-            $transaction->section_id                = $employeed->section->id;
-            $transaction->date                      = new FrozenTime($company->date);
-            $transaction->basic_salary              = round(($employeed->salary/12),2);
-            $transaction->transport_allowance       = round($employeed->transport_allowance/12,2); 
-            $transaction->housing_allowance         = round($employeed->housing_allowance/12,2);
-            $transaction->utility_allowance         = round($employeed->utility_allowance/12,2);
-            $transaction->entertainment_allowance   = round($employeed->entertainment_allowance/12,2);
-            $transaction->medical_allowance         = round($employeed->medical_allowance/12,2); 
-            $transaction->other_allowance           = round($employeed->other_allowance/12,2);
-            $transaction->union_due                 = round($employeed->salary/12 *($employeed->cadre->union_due * 0.01),2);
-            $transaction->pension_deduction         = round((($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12)*($employeed->cadre->pension * 0.01),2);
-            $transaction->paye                      = round(($employeed->salary/12*($employeed->cadre->tax_due * 0.01)),2); 
-            $transaction->ctcs                      = round($employeed->whl_cics + $employeed->bro_cics,2);            
-            $transaction->personal_loan             = round((int)$employeed->pers_loan_rep,2); 
-            $transaction->gross                     = round(($transaction->basic_salary + $transaction->transport_allowance + + $transaction->leave_allowance + 
-                                                            $transaction->housing_allowance + $transaction->utility_allowance + $transaction->entertainment_allowance + 
-                                                            $transaction->medical_allowance + $transaction->arrears + $transaction->other_allowance),2);            
-            $transaction->total_deduction           = round(($transaction->paye + $transaction->personal_loan + $transaction->ctcs +
-                                                            $transaction->salary_advance + $transaction->surcharge + $transaction->union_due + 
-                                                            $transaction->pension_deduction + $transaction->bar_account + $transaction->other_deduction),2);
-            $transaction->net_pay                   = round(($transaction->gross - $transaction->total_deduction),2);
+                /*else{
+                    $this->Flash->error(__('The {0} could not be saved. Please, try again.', $employeed->full_name));
+                }*/            
             }
+            
+            $this->Flash->success(__('New months created successfully'));
 
-            // debug($transaction);
+        }else{
 
-            if ($this->Transactions->save($transaction)) {                
-                $this->Flash->success(__('The {0} has been saved', $employeed->full_name));
-            }else{
-                $this->Flash->error(__('The {0} could not be saved. Please, try again.', $employeed->full_name));
-            }            
-        }
+            $this->Flash->error(__(
+                'This operation has already been performed, 
+                but you can create transaction for an employee through their profile!, 
+                select the employee and select view, 
+                scroll down to transaction section and select new'
+            ));
+
+        }                     
         
-        $this->Flash->success(__('New months created successfully'));
         $this->redirect(['action'=>'index']);
         $this->autoRender = false;
     }

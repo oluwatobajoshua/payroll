@@ -144,6 +144,13 @@ return [
             ]),
         ],
         [
+            'role' => 'user',
+            'controller' => 'Addresses',
+            'action' => ['edit','view','delete'],
+            // 'allowed' => true,
+            'bypassAuth' => true,
+        ],
+        [
             'role' => '*',
             'plugin' => 'DebugKit',
             'controller' => '*',

@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -13,14 +12,6 @@ namespace App\Controller;
 class EmployeesController extends AppController
 {
     /**
-     * 
-     * Login
-     */
-    public function login()
-    {
-    }
-
-    /**
      * Index method
      *
      * @return \Cake\Http\Response|null|void Renders view
@@ -28,8 +19,11 @@ class EmployeesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses'],
-            'limit' => 1000
+            'contain' => ['Cadres','Sections','Grades','Statuses'],
+            // 'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users'],
+            'order' => [
+                'Employees.id' => 'asc'
+            ]
         ];
         $employees = $this->paginate($this->Employees);
 
@@ -46,7 +40,7 @@ class EmployeesController extends AppController
     public function view($id = null)
     {
         $employee = $this->Employees->get($id, [
-            // 'contain' => ['States','Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions', 'WorkDetails'],
+            'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions','WorkDetails'],
         ]);
 
         $this->set(compact('employee'));
@@ -170,12 +164,6 @@ class EmployeesController extends AppController
      */
     public function edit($id = null)
     {
-
-        // debug($this->Employees->Addresses->validator()->remove('name'));
-        // $this->Employees->Addresses->validator()->remove('name');
-        //debug($this->Auth->user('role_id'));
-
-        // debug($this->Employees->isAdmin);
 
         $employee = $this->Employees->get($id, [
             'contain' => ['NextOfKins', 'WorkDetails', 'Educations', 'ChildrenDetails', 'Addresses', 'OtherDepartments.Sections'],

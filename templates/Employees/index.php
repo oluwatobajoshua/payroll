@@ -4,6 +4,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Employee[]|\Cake\Collection\CollectionInterface $employees
  */
+// debug(count($employees));
 ?>
 <?php
 $this->assign('title', __('Employees'));
@@ -18,13 +19,13 @@ $this->Breadcrumbs->add([
         <h2 class="card-title">
             <!-- -->
         </h2>
-        <!-- <div class="card-toolbox">
+        <div class="card-toolbox">
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
                 'class' => 'form-control-sm',
             ]); ?>
             <?= $this->Html->link(__('New Employee'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-        </div> -->
+        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -136,7 +137,7 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-body -->
 
-    <!-- <div class="card-footer d-md-flex paginator">
+    <div class="card-footer d-md-flex paginator">
         <div class="mr-auto" style="font-size:.8rem">
             <?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?>
         </div>
@@ -147,8 +148,8 @@ $this->Breadcrumbs->add([
             <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
             <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
         </ul>
-    </div> -->
-    <!-- /.card-footer -->
+    </div>  
+    <!-- /.card-footer
 </div>
 
 <?php $this->start('scriptBottom'); ?>

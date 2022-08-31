@@ -48,6 +48,7 @@ class EmployeesTableTest extends TestCase
         'app.NextOfKins',
         'app.OtherDepartments',
         'app.Transactions',
+        'app.Users1',
         'app.WorkDetails',
     ];
 

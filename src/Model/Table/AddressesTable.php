@@ -66,10 +66,10 @@ class AddressesTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('employee_id')
-            ->requirePresence('employee_id', 'create')
-            ->notEmptyString('employee_id');
+        // $validator
+        //     ->integer('employee_id')
+        //     ->requirePresence('employee_id', 'create')
+        //     ->notEmptyString('employee_id');
 
         $validator
             ->scalar('name')

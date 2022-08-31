@@ -1,10 +1,14 @@
 $(function () {
-  $("#example1")
+  $(".datatable")
     .DataTable({
+      processing: true,
+      // serverSide: true,
+      // ajax: "/employees/index",
       responsive: true,
-      lengthChange: false,
+      lengthChange: true,
       autoWidth: false,
       paging: true,
+      lengthMenu: [[10, 25, 500, -1], [10, 25, 500, "All"]],
       buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
     })
     .buttons()
@@ -20,8 +24,6 @@ $(function () {
     autoWidth: false,
     responsive: true,
   });
-
-  
 
   if ($("#transactions").attr("id")) {
     console.log($("#transactions").attr("id"));
@@ -45,36 +47,36 @@ $(function () {
       success: function (status) {
         //remove the value loading on success
         // console.log(status);
-        var union_due   = status["cadre"]["union_due"];
-        var pension     = status["cadre"]["pension"];
-        var tax_due     = status["cadre"]["tax_due"];
-        
+        var union_due = status["cadre"]["union_due"];
+        var pension = status["cadre"]["pension"];
+        var tax_due = status["cadre"]["tax_due"];
+
         // $transaction->ctcs  = $employeed->whl_cics + $employeed->bro_cics;
-        $('#basic-salary').change(function (e) {
-            update();
-        });        
+        $("#basic-salary").change(function (e) {
+          update();
+        });
 
-        function update(){
-            // $union_due          = $employeed->salary/12 *($employeed->cadre->union_due * 0.01);
-            // $pension            = ($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12*($employeed->cadre->pension * 0.01);
-            // $paye               = $employeed->salary/12 *($employeed->cadre->tax_due * 0.01); 
-            var basic       = parseFloat($('#basic-salary').val()); 
-            var housing     = parseFloat($('#housing-allowance').val());
-            var transport   = parseFloat($('#transport-allowance').val());
+        function update() {
+          // $union_due          = $employeed->salary/12 *($employeed->cadre->union_due * 0.01);
+          // $pension            = ($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12*($employeed->cadre->pension * 0.01);
+          // $paye               = $employeed->salary/12 *($employeed->cadre->tax_due * 0.01);
+          var basic = parseFloat($("#basic-salary").val());
+          var housing = parseFloat($("#housing-allowance").val());
+          var transport = parseFloat($("#transport-allowance").val());
 
-            var unionDue    =   basic * (union_due * 0.01) 
-            console.log(unionDue);
-            $('#union-due').val(unionDue.toFixed(2));
+          var unionDue = basic * (union_due * 0.01);
+          console.log(unionDue);
+          $("#union-due").val(unionDue.toFixed(2));
 
-            var pensionDeduction = (basic + housing + transport) * (pension * 0.01)
-            console.log(pensionDeduction);
-            $('#pension-deduction').val(pensionDeduction.toFixed(2));
+          var pensionDeduction =
+            (basic + housing + transport) * (pension * 0.01);
+          console.log(pensionDeduction);
+          $("#pension-deduction").val(pensionDeduction.toFixed(2));
 
-            var tax_amount = basic * (tax_due * 0.01);
-            console.log(tax_amount);
-            $('#paye').val(tax_amount.toFixed(2));
+          var tax_amount = basic * (tax_due * 0.01);
+          console.log(tax_amount);
+          $("#paye").val(tax_amount.toFixed(2));
         }
-
       },
       error: function (xhr, textStatus, error) {
         console.log(xhr);

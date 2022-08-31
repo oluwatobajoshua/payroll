@@ -42,7 +42,7 @@ $this->Breadcrumbs->add([
                     <th scope="col"><?= $this->Paginator->sort('utility_allowance', ['label' => 'Utility Allow']) ?></th>
                     <th scope="col"><?= $this->Paginator->sort('pension_deduction') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('paye') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('ctcs') ?></th>
+                    <!-- <th scope="col"><?= $this->Paginator->sort('ctcs') ?></th> -->
                     <!--<th scope="col"><?= $this->Paginator->sort('created') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('domestic_allowance') ?></th>
@@ -78,7 +78,7 @@ $this->Breadcrumbs->add([
                         <td><?= $this->Number->format($transaction->utility_allowance, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>
                         <td><?= $this->Number->format($transaction->pension_deduction, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>
                         <td><?= $this->Number->format($transaction->paye, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>
-                        <td><?= $this->Number->format($transaction->ctcs, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>
+                        <!-- <td><?= $this->Number->format($transaction->ctcs, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td> -->
                         <!--<td><?= h($transaction->created) ?></td>
                   <td><?= h($transaction->modified) ?></td>
                   <td><?= $this->Number->format($transaction->domestic_allowance, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>

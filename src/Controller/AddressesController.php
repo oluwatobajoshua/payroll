@@ -107,6 +107,6 @@ class AddressesController extends AppController
             $this->Flash->error(__('The address could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Employees','action' => 'view',$address->employee_id]);
     }
 }

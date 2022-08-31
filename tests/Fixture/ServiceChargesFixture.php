@@ -26,8 +26,8 @@ class ServiceChargesFixture extends TestFixture
                 'end_of_year_bonus' => 1,
                 'njic_arrears' => 1,
                 'company_id' => 1,
-                'created' => '2022-08-22 19:28:46',
-                'modified' => '2022-08-22 19:28:46',
+                'created' => '2022-08-30 12:18:28',
+                'modified' => '2022-08-30 12:18:28',
             ],
         ];
         parent::init();

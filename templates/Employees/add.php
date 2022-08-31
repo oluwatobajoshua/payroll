@@ -93,7 +93,7 @@ $this->Breadcrumbs->add([
               $this->Form->setTemplates([
                 'inputContainer' => '<div class="form-group input col-md-4 col-xs-6 {{type}} {{required}}">{{content}}</div>'
               ]);
-              for ($i = 0; $i < $addressCount; $i++) {
+              for ($i = 0; $i < $nextOfKinCount; $i++) {
                 echo $this->Form->control('next_of_kins.0.id');
                 echo $this->Form->control('next_of_kins.0.name');
                 echo $this->Form->control('next_of_kins.0.relationship_id', ['options' => $relationships]);
@@ -215,11 +215,7 @@ $this->Breadcrumbs->add([
           </div>
           <div class="card-footer d-flex">
             <div class="">
-              <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $employee->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'btn btn-danger']
-              ) ?>
+              
             </div>
             <div class="ml-auto">
               <?= $this->Form->button(__('Save')) ?>

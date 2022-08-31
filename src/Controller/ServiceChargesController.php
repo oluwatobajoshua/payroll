@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\I18n\FrozenDate;
+
 /**
  * ServiceCharges Controller
  *
@@ -50,19 +52,28 @@ class ServiceChargesController extends AppController
      */
     public function add()
     {
-        $this->loadModel('Transactions');
-        $this->loadModel('Employees');
-        $serviceCharge = $this->ServiceCharges->newEntity();
+        $serviceCharge = $this->ServiceCharges->newEmptyEntity();
+        $company = $this->ServiceCharges->Companies->get(1);
+        // debug($company);
+        $trans = $this->ServiceCharges->Grades->Employees->Transactions->find()->where(['date' => new FrozenDate($company->date)])->count();
+
+        if (!$trans) {
+            // debug($trans);
+            $this->Flash->error(__('Please perform transaction for the new month before adding service charge'));
+            return $this->redirect(['controller'=>'Transactions','action' => 'index']);
+            // exit;
+        }
+
         if ($this->request->is('post')) {
             $serviceCharge = $this->ServiceCharges->patchEntity($serviceCharge, $this->request->getData());
             if ($this->ServiceCharges->save($serviceCharge)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Service Charge'));
+                $this->Flash->success(__('The service charge has been saved.'));
                 //get employee with service charge grade 
-                $employees = $this->Employees->find('all')->where(['grade_id' => $serviceCharge->grade_id]);
-
+                $employees = $this->ServiceCharges->Grades->Employees->find('all')->where(['grade_id' => $serviceCharge->grade_id]);
+                // debug($employees->all());exit;
                 foreach ($employees as $emp) {
                     //get employee's transaction and update service charge
-                    $transactions = $this->Transactions->find('all')->where(['employee_id' => $emp->id]);
+                    $transactions = $this->ServiceCharges->Grades->Employees->Transactions->find('all')->where(['employee_id' => $emp->id]);
                     foreach ($transactions as $trans) {
                         //update transactions with service charge amount 
                         $trans->service_charge = $serviceCharge->amount;
@@ -71,16 +82,16 @@ class ServiceChargesController extends AppController
                         $trans->arrears = $serviceCharge->arrears;
 
                         //save trans 
-                        $this->Transactions->save($trans);
+                        $this->ServiceCharges->Grades->Employees->Transactions->save($trans);
                     }
                 }
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Service Charge'));
+            $this->Flash->error(__('The service charge could not be saved. Please, try again.'));
         }
-        $grades = $this->ServiceCharges->Grades->find('list', ['limit' => 200]);
-        $companies = $this->ServiceCharges->Companies->find('list', ['limit' => 200]);
+        $grades = $this->ServiceCharges->Grades->find('list', ['limit' => 200])->all();
+        $companies = $this->ServiceCharges->Companies->find('list', ['limit' => 200])->all();
         $this->set(compact('serviceCharge', 'grades', 'companies'));
     }
 
@@ -93,22 +104,21 @@ class ServiceChargesController extends AppController
      */
     public function edit($id = null)
     {
-        $this->loadModel('Transactions');
-        $this->loadModel('Employees');
-
         $serviceCharge = $this->ServiceCharges->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $serviceCharge = $this->ServiceCharges->patchEntity($serviceCharge, $this->request->getData());
             if ($this->ServiceCharges->save($serviceCharge)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Service Charge'));
+                $this->Flash->success(__('The service charge has been saved.'));
+
                 //get employee with service charge grade 
-                $employees = $this->Employees->find('all')->where(['grade_id' => $serviceCharge->grade_id]);
+                $employees = $this->ServiceCharges->Grades->Employees->find('all')->where(['grade_id' => $serviceCharge->grade_id]);
+                // debug($employees->all());exit;
 
                 foreach ($employees as $emp) {
                     //get employee's transaction and update service charge
-                    $transactions = $this->Transactions->find('all')->where(['employee_id' => $emp->id]);
+                    $transactions = $this->ServiceCharges->Grades->Employees->Transactions->find('all')->where(['employee_id' => $emp->id]);
                     foreach ($transactions as $trans) {
                         //update transactions with service charge amount 
                         $trans->service_charge = $serviceCharge->amount;
@@ -116,15 +126,16 @@ class ServiceChargesController extends AppController
                         $trans->end_of_year_bonus = $serviceCharge->end_of_year_bonus;
                         $trans->arrears = $serviceCharge->arrears;
                         //save trans 
-                        $this->Transactions->save($trans);
+                        $this->ServiceCharges->Grades->Employees->Transactions->save($trans);
                     }
                 }
+
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Service Charge'));
+            $this->Flash->error(__('The service charge could not be saved. Please, try again.'));
         }
-        $grades = $this->ServiceCharges->Grades->find('list', ['limit' => 200]);
-        $companies = $this->ServiceCharges->Companies->find('list', ['limit' => 200]);
+        $grades = $this->ServiceCharges->Grades->find('list', ['limit' => 200])->all();
+        $companies = $this->ServiceCharges->Companies->find('list', ['limit' => 200])->all();
         $this->set(compact('serviceCharge', 'grades', 'companies'));
     }
 

@@ -52,7 +52,7 @@ return [
             'username' => 'root',
             'password' => '',
 
-            'database' => 'premierh_cake110',
+            'database' => 'premierh_cake109',
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.

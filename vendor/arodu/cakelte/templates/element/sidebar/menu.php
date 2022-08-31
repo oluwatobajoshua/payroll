@@ -70,6 +70,12 @@
         <p>Designations</p>
       </a>
     </li>
+    <li class="nav-item">
+      <a href="<?php echo $this->Url->build('/users/index'); ?>" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Users</p>
+      </a>
+    </li>
   </ul>
 </li>
 <li class="nav-item">
@@ -88,9 +94,9 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="<?php echo $this->Url->build('/users/index'); ?>" class="nav-link">
+      <a href="<?php echo $this->Url->build('/service-charges'); ?>" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-        <p>Users</p>
+        <p>Service Charge</p>
       </a>
     </li>
   </ul>

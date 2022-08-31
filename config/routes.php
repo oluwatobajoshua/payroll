@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  *
@@ -47,23 +48,23 @@ return static function (RouteBuilder $routes) {
 
     $routes->scope('/', function (RouteBuilder $builder) {
 
-        $builder->setExtensions(['json','xml']);
+        $builder->setExtensions(['json', 'xml']);
         //$routes->resources('Employees');
         // Register scoped middleware for in scopes.
         $builder->registerMiddleware('csrf', new CsrfProtectionMiddleware([
-        'httponly' => true
+            'httponly' => true
         ]));
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Employees', 'action' => 'index', 'home']);
-        
+        $builder->connect('/', ['controller' => 'Employees', 'action' => 'index']);
+
         $builder->prefix('Admin', function (RouteBuilder $routes) {
 
             $routes->connect('/', ['controller' => 'Employees', 'action' => 'index']);
-    
+
             // All routes here will be prefixed with `/admin`, and
             // have the `'prefix' => 'Admin'` route element added that
             // will be required when generating URLs for these routes

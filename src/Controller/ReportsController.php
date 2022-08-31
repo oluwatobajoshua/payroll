@@ -345,10 +345,12 @@ class ReportsController extends AppController
                         'Religions',
                         'HighestEducations',
                         'WorkDetails', 'Educations', 'ChildrenDetails', 'OtherDepartments.Sections'
-                    ])->where(['Employees.status_id' => 1]);                                        
+                    ]);                                        
                 }
             ]
         ]);
+
+        // debug($sections->first());
         
         $highestEducations = $this->Employees->HighestEducations->find('list', ['limit' => 200]);
         $company = $this->Companies->get(1);

@@ -78,7 +78,7 @@ $time = FrozenTime::now();
         <p>PLEASE CREDIT THE ACCOUNTS OF THE FOLLOWING STAFF AS PER OUR ATTACHED <br> CHEUQUE NO: ______________________ DATE: _____________ </p>
         <?php if (count($bank->employees) > 0) : ?>
           <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered datatable">
               <thead>
                 <tr style="text-align:center">
                   <th style="text-align:center">S/N</th>

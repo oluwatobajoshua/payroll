@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -69,7 +68,7 @@ use Cake\ORM\Entity;
  * @property string|null $salary_advance_inst
  * @property string|null $drivers_allowance
  * @property string|null $bro_cics
- * @property int $user_id
+ * @property int|null $user_id
  * @property string|null $contribution
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -97,6 +96,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\NextOfKin[] $next_of_kins
  * @property \App\Model\Entity\OtherDepartment[] $other_departments
  * @property \App\Model\Entity\Transaction[] $transactions
+ * @property \App\Model\Entity\Users1[] $users1
  * @property \App\Model\Entity\WorkDetail[] $work_details
  */
 class Employee extends Entity
@@ -107,11 +107,10 @@ class Employee extends Entity
      
     protected function _getFullName()
     {
-        return $this->first_name . '  ' . $this->last_name;
+        return strtoupper($this->first_name . '  ' . $this->last_name);
     } 
     
     protected $_virtual = ['full_name'];
-     
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -208,6 +207,7 @@ class Employee extends Entity
         'next_of_kins' => true,
         'other_departments' => true,
         'transactions' => true,
+        'users1' => true,
         'work_details' => true,
     ];
 }

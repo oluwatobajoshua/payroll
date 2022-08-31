@@ -53,8 +53,8 @@ class EmployeesFixture extends TestFixture
                 'housing_upfront' => 'L',
                 'designation_id' => 1,
                 'status_id' => 1,
-                'date_of_birth' => '2022-08-09',
-                'date_joined' => '2022-08-09',
+                'date_of_birth' => '2022-08-30',
+                'date_joined' => '2022-08-30',
                 'domestic_allowance' => 1.5,
                 'tax_number' => 'Lorem ip',
                 'tax_relief' => 'Lorem ip',
@@ -81,8 +81,8 @@ class EmployeesFixture extends TestFixture
                 'bro_cics' => 1.5,
                 'user_id' => 1,
                 'contribution' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2022-08-09 08:06:23',
-                'modified' => '2022-08-09 08:06:23',
+                'created' => '2022-08-30 21:19:44',
+                'modified' => '2022-08-30 21:19:44',
             ],
         ];
         parent::init();
