@@ -2,8 +2,6 @@
 
 use Cake\I18n\FrozenTime;
 
-// debug($sections->all());
-
 ?>
 <style>
   td {
