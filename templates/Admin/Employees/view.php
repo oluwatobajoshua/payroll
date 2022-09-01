@@ -94,6 +94,10 @@ $this->Breadcrumbs->add([
             <td><?= h($employee->home_town) ?></td>
         </tr>
         <tr>
+            <th><?= __('State') ?></th>
+            <td><?= $employee->has('state') ? $this->Html->link($employee->state->name, ['controller' => 'States', 'action' => 'view', $employee->state->id]) : '' ?></td>
+        </tr>
+        <tr>
             <th><?= __('Physical Posture') ?></th>
             <td><?= $employee->has('physical_posture') ? $this->Html->link($employee->physical_posture->name, ['controller' => 'PhysicalPostures', 'action' => 'view', $employee->physical_posture->id]) : '' ?></td>
         </tr>
@@ -138,6 +142,10 @@ $this->Breadcrumbs->add([
             <td><?= h($employee->pension_control) ?></td>
         </tr>
         <tr>
+            <th><?= __('User') ?></th>
+            <td><?= $employee->has('user') ? $this->Html->link($employee->user->username, ['controller' => 'Users', 'action' => 'view', $employee->user->id]) : '' ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($employee->id) ?></td>
         </tr>
@@ -172,10 +180,6 @@ $this->Breadcrumbs->add([
         <tr>
             <th><?= __('Service Charge Bank') ?></th>
             <td><?= $this->Number->format($employee->service_charge_bank) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('State Of Origin Id') ?></th>
-            <td><?= $this->Number->format($employee->state_of_origin_id) ?></td>
         </tr>
         <tr>
             <th><?= __('Domestic Allowance') ?></th>
@@ -254,10 +258,6 @@ $this->Breadcrumbs->add([
             <td><?= $this->Number->format($employee->bro_cics) ?></td>
         </tr>
         <tr>
-            <th><?= __('User Id') ?></th>
-            <td><?= $this->Number->format($employee->user_id) ?></td>
-        </tr>
-        <tr>
             <th><?= __('Date Of Birth') ?></th>
             <td><?= h($employee->date_of_birth) ?></td>
         </tr>
@@ -296,78 +296,6 @@ $this->Breadcrumbs->add([
   </div>
   <div class="card-body">
     <?= $this->Text->autoParagraph(h($employee->contribution)); ?>
-  </div>
-</div>
-
-<div class="related related-users view card">
-  <div class="card-header d-sm-flex">
-    <h3 class="card-title"><?= __('Related Users') ?></h3>
-    <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Users' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Users' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
-    </div>
-  </div>
-  <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap">
-      <tr>
-          <th><?= __('Id') ?></th>
-          <th><?= __('Employee Id') ?></th>
-          <th><?= __('Role Id') ?></th>
-          <th><?= __('Role') ?></th>
-          <th><?= __('Username') ?></th>
-          <th><?= __('Email') ?></th>
-          <th><?= __('Token') ?></th>
-          <th><?= __('Token Expires') ?></th>
-          <th><?= __('Api Token') ?></th>
-          <th><?= __('Activation Date') ?></th>
-          <th><?= __('Tos Date') ?></th>
-          <th><?= __('Password') ?></th>
-          <th><?= __('Raw Password') ?></th>
-          <th><?= __('Active') ?></th>
-          <th><?= __('Is Superuser') ?></th>
-          <th><?= __('PasswdIsValid') ?></th>
-          <th><?= __('Created') ?></th>
-          <th><?= __('Modified') ?></th>
-          <th><?= __('Last Login') ?></th>
-          <th class="actions"><?= __('Actions') ?></th>
-      </tr>
-      <?php if (empty($employee->users)) { ?>
-        <tr>
-            <td colspan="20" class="text-muted">
-              Users record not found!
-            </td>
-        </tr>
-      <?php }else{ ?>
-        <?php foreach ($employee->users as $users) : ?>
-        <tr>
-            <td><?= h($users->id) ?></td>
-            <td><?= h($users->employee_id) ?></td>
-            <td><?= h($users->role_id) ?></td>
-            <td><?= h($users->role) ?></td>
-            <td><?= h($users->username) ?></td>
-            <td><?= h($users->email) ?></td>
-            <td><?= h($users->token) ?></td>
-            <td><?= h($users->token_expires) ?></td>
-            <td><?= h($users->api_token) ?></td>
-            <td><?= h($users->activation_date) ?></td>
-            <td><?= h($users->tos_date) ?></td>
-            <td><?= h($users->password) ?></td>
-            <td><?= h($users->raw_password) ?></td>
-            <td><?= h($users->active) ?></td>
-            <td><?= h($users->is_superuser) ?></td>
-            <td><?= h($users->passwdIsValid) ?></td>
-            <td><?= h($users->created) ?></td>
-            <td><?= h($users->modified) ?></td>
-            <td><?= h($users->last_login) ?></td>
-            <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-      <?php } ?>
-    </table>
   </div>
 </div>
 
@@ -465,7 +393,7 @@ $this->Breadcrumbs->add([
   </div>
 </div>
 
-<div class="related related-companies view card">
+<!-- <div class="related related-companies view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Companies') ?></h3>
     <div class="card-toolbox">
@@ -517,7 +445,7 @@ $this->Breadcrumbs->add([
       <?php } ?>
     </table>
   </div>
-</div>
+</div> -->
 
 <div class="related related-educations view card">
   <div class="card-header d-sm-flex">
@@ -737,7 +665,7 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Transactions') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Transactions' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Transactions' , 'action' => 'add',$employee->id], ['class' => 'btn btn-primary btn-sm']) ?>
       <?= $this->Html->link(__('List '), ['controller' => 'Transactions' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>

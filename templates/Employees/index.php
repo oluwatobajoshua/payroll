@@ -29,7 +29,7 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example1" class="table table-hover text-nowrap">
+        <table id="example1" class="table table-hover text-nowrap datatable">
             <thead>
               <tr>
                 <th scope="col"><?= $this->Paginator->sort('Id') ?></th>

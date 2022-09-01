@@ -66,7 +66,7 @@ class EmployeesTable extends Table
         parent::initialize($config);
 
         $this->setTable('employees');
-        $this->setDisplayField('id');
+        $this->setDisplayField('full_name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -90,7 +90,7 @@ class EmployeesTable extends Table
         ]);
         $this->belongsTo('ServiceCharges', [
             'className' => 'Banks',
-            'foreignKey' => 'service_charge_id',
+            'foreignKey' => 'service_charge_bank',
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('Genders', [

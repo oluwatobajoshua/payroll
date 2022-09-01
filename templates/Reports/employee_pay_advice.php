@@ -30,7 +30,7 @@
         'inputContainer' => '<div class="form-group input col-md-3 col-xs-6 {{type}} {{required}}">{{content}}</div>'
       ]);
 
-      echo $this->Form->control('slip_type', ['multiple' => true,'options'=>['gpa' => 'General Pay Slip','spa' => 'Service Charge Slip'],'title' => 'Hold down the control key to select multiple', 'rel' => 'tooltip']);
+      echo $this->Form->control('slip_type', ['multiple' => true,'options'=>['gpa' => 'General Pay Slip','spa' => 'Service Charge Slip'],'title' => 'Hold down the control key to select multiple', 'rel' => 'tooltip', 'onChange' => 'document.getElementById("empForm").submit();']);
       // echo $this->Form->control('spa', ['label'=>'Service Charge Slip','type' => 'checkbox', 'empty' => 'Select a cadre', 'title' => 'Service Charge Pay Advice', 'rel' => 'tooltip']);
       echo $this->Form->control('employee', ['options' => $employees, 'empty' => 'Select Employee', 'title' => 'Select an employee to print for one employee', 'rel' => 'tooltip', 'onChange' => 'document.getElementById("empForm").submit();']);
       echo $this->Form->control('section', ['options' => $depts, 'empty' => 'Select Section', 'title' => 'Please select gpa or spa before selecting a section', 'rel' => 'tooltip', 'onChange' => 'document.getElementById("empForm").submit();']);

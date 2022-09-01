@@ -97,7 +97,7 @@ class TransactionsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $company = $this->Transactions->Companies->get(1);
 
-        $trans = $this->Transactions->find()->count();
+        $trans = $this->Transactions->find()->where(['date' => new FrozenTime($company->date)])->count();
 
         if(!$trans){
             $employees = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections'])->where(['Employees.status_id' => 1]);        

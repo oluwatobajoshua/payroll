@@ -543,19 +543,20 @@ class ReportsController extends AppController
      * @return \Cake\Http\Response|null
      */
     public function employeePayAdvice()
-    {      
+    { 
+        // debug('Welcome');
 
         $gpa = 1;
 
-        $spa = 1;
+        $spa = 0;
 
         $sections  = $this->Sections->find();
 
-        $section_id = null; 
+        $section_id = 0; 
 
-        if($this->request->is('post')  &&  $this->request->getData('section'))
+        if($this->request->is('post')  &&  $this->request->getData('section') && $this->request->getData('slip_type'))
         {
-            debug($this->request->getData('slip_type'));
+            // debug($this->request->getData('slip_type'));
             //get using id
             $section_id = $this->request->getData('section'); 
             
@@ -563,14 +564,16 @@ class ReportsController extends AppController
             $gpa = $this->request->getData('slip_type')[0]; 
 
             //get service charge checkbox value
-            $spa = $this->request->getData('slip_type')[1]; 
-            
+            if(count($this->request->getData('slip_type')) > 1){
+                $spa = $this->request->getData('slip_type')[1]; 
+            }
+
             $sections  = $this->Sections->find()->where(['Sections.id' => $section_id]);
         }
-        if($this->request->is('post')  &&  $this->request->getData('employee'))
+        if($this->request->is('post')  &&  $this->request->getData('employee')  && $this->request->getData('slip_type'))
         {
 
-            debug($this->request->getData('slip_type'));
+            // debug($this->request->getData('slip_type'));
             //get using id
             $section_id = 0; 
 
@@ -578,7 +581,9 @@ class ReportsController extends AppController
             $gpa = $this->request->getData('slip_type')[0]; 
 
             //get service charge checkbox value
-            $spa = $this->request->getData('slip_type')[1]; 
+            if(count($this->request->getData('slip_type')) > 1){
+                $spa = $this->request->getData('slip_type')[1]; 
+            }
 
             $sections  = $this->Sections->find()->contain([
                 'Employees' => [

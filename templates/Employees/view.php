@@ -9,9 +9,9 @@
 <?php
 $this->assign('title', __('Employee'));
 $this->Breadcrumbs->add([
-    ['title' => 'Home', 'url' => '/'],
-    ['title' => 'List Employees', 'url' => ['action' => 'index']],
-    ['title' => 'View'],
+  ['title' => 'Home', 'url' => '/'],
+  ['title' => 'List Employees', 'url' => ['action' => 'index']],
+  ['title' => 'View'],
 ]);
 ?>
 
@@ -21,71 +21,92 @@ $this->Breadcrumbs->add([
   </div>
   <div class="card-body table-responsive p-0">
     <table class="table table-hover text-nowrap">
-        <tr>
-            <th><?= __('Branch') ?></th>
-            <td><?= $employee->has('branch') ? $this->Html->link($employee->branch->name, ['controller' => 'Branches', 'action' => 'view', $employee->branch->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('First Name') ?></th>
-            <td><?= h($employee->first_name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Last Name') ?></th>
-            <td><?= h($employee->last_name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Phone') ?></th>
-            <td><?= h($employee->phone) ?></td>
-        </tr>
-        <tr>
+      <tr>
+        <th><?= __('Branch') ?></th>
+        <td><?= $employee->has('branch') ? $this->Html->link($employee->branch->name, ['controller' => 'Branches', 'action' => 'view', $employee->branch->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('First Name') ?></th>
+        <td><?= h($employee->first_name) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Last Name') ?></th>
+        <td><?= h($employee->last_name) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Other Name') ?></th>
+        <td><?= h($employee->other_name) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Phone') ?></th>
+        <td><?= h($employee->phone) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Salary') ?></th>
+        <td><?= $this->Number->format($employee->salary) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Transport Allowance') ?></th>
+        <td><?= $this->Number->format($employee->transport_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Housing Allowance') ?></th>
+        <td><?= $this->Number->format($employee->housing_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Utility Allowance') ?></th>
+        <td><?= $this->Number->format($employee->utility_allowance) ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('Email') ?></th>
             <td><?= h($employee->email) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Other Name') ?></th>
-            <td><?= h($employee->other_name) ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      
+      <!--<tr>
             <th><?= __('Reporting To') ?></th>
             <td><?= h($employee->reporting_to) ?></td>
         </tr>
-        <tr>
+         <tr>
             <th><?= __('Name Of Spouse') ?></th>
             <td><?= h($employee->name_of_spouse) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Grade') ?></th>
-            <td><?= $employee->has('grade') ? $this->Html->link($employee->grade->name, ['controller' => 'Grades', 'action' => 'view', $employee->grade->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Section') ?></th>
-            <td><?= $employee->has('section') ? $this->Html->link($employee->section->name, ['controller' => 'Sections', 'action' => 'view', $employee->section->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Cadre') ?></th>
-            <td><?= $employee->has('cadre') ? $this->Html->link($employee->cadre->name, ['controller' => 'Cadres', 'action' => 'view', $employee->cadre->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Bank') ?></th>
-            <td><?= $employee->has('bank') ? $this->Html->link($employee->bank->name, ['controller' => 'Banks', 'action' => 'view', $employee->bank->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Acct No') ?></th>
-            <td><?= h($employee->acct_no) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Service Charge Number') ?></th>
-            <td><?= h($employee->service_charge_number) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Gender') ?></th>
-            <td><?= $employee->has('gender') ? $this->Html->link($employee->gender->name, ['controller' => 'Genders', 'action' => 'view', $employee->gender->id]) : '' ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      <tr>
+        <th><?= __('Grade') ?></th>
+        <td><?= $employee->has('grade') ? $this->Html->link($employee->grade->name, ['controller' => 'Grades', 'action' => 'view', $employee->grade->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Section') ?></th>
+        <td><?= $employee->has('section') ? $this->Html->link($employee->section->name, ['controller' => 'Sections', 'action' => 'view', $employee->section->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Cadre') ?></th>
+        <td><?= $employee->has('cadre') ? $this->Html->link($employee->cadre->name, ['controller' => 'Cadres', 'action' => 'view', $employee->cadre->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Bank') ?></th>
+        <td><?= $employee->has('bank') ? $this->Html->link($employee->bank->name, ['controller' => 'Banks', 'action' => 'view', $employee->bank->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Acct No') ?></th>
+        <td><?= h($employee->acct_no) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Service Charge Bank') ?></th>
+        <td><?= h($employee->service_charge->name) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Service Charge Number') ?></th>
+        <td><?= h($employee->service_charge_number) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Gender') ?></th>
+        <td><?= $employee->has('gender') ? $this->Html->link($employee->gender->name, ['controller' => 'Genders', 'action' => 'view', $employee->gender->id]) : '' ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('Religion') ?></th>
             <td><?= $employee->has('religion') ? $this->Html->link($employee->religion->name, ['controller' => 'Religions', 'action' => 'view', $employee->religion->id]) : '' ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      <!-- <tr>
             <th><?= __('Local') ?></th>
             <td><?= $employee->has('local') ? $this->Html->link($employee->local->name, ['controller' => 'Locals', 'action' => 'view', $employee->local->id]) : '' ?></td>
         </tr>
@@ -108,156 +129,139 @@ $this->Breadcrumbs->add([
         <tr>
             <th><?= __('Highest Education') ?></th>
             <td><?= $employee->has('highest_education') ? $this->Html->link($employee->highest_education->name, ['controller' => 'HighestEducations', 'action' => 'view', $employee->highest_education->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Housing Upfront') ?></th>
-            <td><?= h($employee->housing_upfront) ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      <tr>
+        <th><?= __('Housing Upfront') ?></th>
+        <td><?= h($employee->housing_upfront) ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('Designation') ?></th>
             <td><?= $employee->has('designation') ? $this->Html->link($employee->designation->name, ['controller' => 'Designations', 'action' => 'view', $employee->designation->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Status') ?></th>
-            <td><?= $employee->has('status') ? $this->Html->link($employee->status->name, ['controller' => 'Statuses', 'action' => 'view', $employee->status->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Tax Number') ?></th>
-            <td><?= h($employee->tax_number) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Tax Relief') ?></th>
-            <td><?= h($employee->tax_relief) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Tax Paid To Date') ?></th>
-            <td><?= h($employee->tax_paid_to_date) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Pension No') ?></th>
-            <td><?= h($employee->pension_no) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Pension Control') ?></th>
-            <td><?= h($employee->pension_control) ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      <tr>
+        <th><?= __('Status') ?></th>
+        <td><?= $employee->has('status') ? $this->Html->link($employee->status->name, ['controller' => 'Statuses', 'action' => 'view', $employee->status->id]) : '' ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Tax Number') ?></th>
+        <td><?= h($employee->tax_number) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Tax Relief') ?></th>
+        <td><?= h($employee->tax_relief) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Tax Paid To Date') ?></th>
+        <td><?= h($employee->tax_paid_to_date) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Pension No') ?></th>
+        <td><?= h($employee->pension_no) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Pension Control') ?></th>
+        <td><?= h($employee->pension_control) ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('User') ?></th>
             <td><?= $employee->has('user') ? $this->Html->link($employee->user->username, ['controller' => 'Users', 'action' => 'view', $employee->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($employee->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Staff No') ?></th>
-            <td><?= $this->Number->format($employee->staff_no) ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+      <tr>
+        <th><?= __('Id') ?></th>
+        <td><?= $this->Number->format($employee->id) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Staff No') ?></th>
+        <td><?= $this->Number->format($employee->staff_no) ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('Years Of Experience') ?></th>
             <td><?= $this->Number->format($employee->years_of_experience) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Salary') ?></th>
-            <td><?= $this->Number->format($employee->salary) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Transport Allowance') ?></th>
-            <td><?= $this->Number->format($employee->transport_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Housing Allowance') ?></th>
-            <td><?= $this->Number->format($employee->housing_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Utility Allowance') ?></th>
-            <td><?= $this->Number->format($employee->utility_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Leave Allowance') ?></th>
-            <td><?= $this->Number->format($employee->leave_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Service Charge Bank') ?></th>
-            <td><?= $this->Number->format($employee->service_charge_bank) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Domestic Allowance') ?></th>
-            <td><?= $this->Number->format($employee->domestic_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Medical Allowance') ?></th>
-            <td><?= $this->Number->format($employee->medical_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Entertainment Allowance') ?></th>
-            <td><?= $this->Number->format($employee->entertainment_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Other Allowance') ?></th>
-            <td><?= $this->Number->format($employee->other_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Personal Loan') ?></th>
-            <td><?= $this->Number->format($employee->personal_loan) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Pers Loan Rep') ?></th>
-            <td><?= $this->Number->format($employee->pers_loan_rep) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Pers Loan Paid') ?></th>
-            <td><?= $this->Number->format($employee->pers_loan_paid) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Pers Loan Inst') ?></th>
-            <td><?= $this->Number->format($employee->pers_loan_inst) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Car Loan') ?></th>
-            <td><?= $this->Number->format($employee->car_loan) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Car Loan Rep') ?></th>
-            <td><?= $this->Number->format($employee->car_loan_rep) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Car Loan Inst') ?></th>
-            <td><?= $this->Number->format($employee->car_loan_inst) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Car Loan Paid') ?></th>
-            <td><?= $this->Number->format($employee->car_loan_paid) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Whl Cics') ?></th>
-            <td><?= $this->Number->format($employee->whl_cics) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Salary Advance') ?></th>
-            <td><?= $this->Number->format($employee->salary_advance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Salary Advance Rep') ?></th>
-            <td><?= $this->Number->format($employee->salary_advance_rep) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Salary Advance Paid') ?></th>
-            <td><?= $this->Number->format($employee->salary_advance_paid) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Salary Advance Inst') ?></th>
-            <td><?= $this->Number->format($employee->salary_advance_inst) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Drivers Allowance') ?></th>
-            <td><?= $this->Number->format($employee->drivers_allowance) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Bro Cics') ?></th>
-            <td><?= $this->Number->format($employee->bro_cics) ?></td>
-        </tr>
-        <tr>
+        </tr> -->
+
+
+      <tr>
+        <th><?= __('Leave Allowance') ?></th>
+        <td><?= $this->Number->format($employee->leave_allowance) ?></td>
+      </tr>
+      
+      <tr>
+        <th><?= __('Domestic Allowance') ?></th>
+        <td><?= $this->Number->format($employee->domestic_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Medical Allowance') ?></th>
+        <td><?= $this->Number->format($employee->medical_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Entertainment Allowance') ?></th>
+        <td><?= $this->Number->format($employee->entertainment_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Other Allowance') ?></th>
+        <td><?= $this->Number->format($employee->other_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Personal Loan') ?></th>
+        <td><?= $this->Number->format($employee->personal_loan) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Pers Loan Rep') ?></th>
+        <td><?= $this->Number->format($employee->pers_loan_rep) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Pers Loan Paid') ?></th>
+        <td><?= $this->Number->format($employee->pers_loan_paid) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Pers Loan Inst') ?></th>
+        <td><?= $this->Number->format($employee->pers_loan_inst) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Car Loan') ?></th>
+        <td><?= $this->Number->format($employee->car_loan) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Car Loan Rep') ?></th>
+        <td><?= $this->Number->format($employee->car_loan_rep) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Car Loan Inst') ?></th>
+        <td><?= $this->Number->format($employee->car_loan_inst) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Car Loan Paid') ?></th>
+        <td><?= $this->Number->format($employee->car_loan_paid) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Whl Cics') ?></th>
+        <td><?= $this->Number->format($employee->whl_cics) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Salary Advance') ?></th>
+        <td><?= $this->Number->format($employee->salary_advance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Salary Advance Rep') ?></th>
+        <td><?= $this->Number->format($employee->salary_advance_rep) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Salary Advance Paid') ?></th>
+        <td><?= $this->Number->format($employee->salary_advance_paid) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Salary Advance Inst') ?></th>
+        <td><?= $this->Number->format($employee->salary_advance_inst) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Drivers Allowance') ?></th>
+        <td><?= $this->Number->format($employee->drivers_allowance) ?></td>
+      </tr>
+      <tr>
+        <th><?= __('Bro Cics') ?></th>
+        <td><?= $this->Number->format($employee->bro_cics) ?></td>
+      </tr>
+      <!-- <tr>
             <th><?= __('Date Of Birth') ?></th>
             <td><?= h($employee->date_of_birth) ?></td>
         </tr>
@@ -272,15 +276,15 @@ $this->Breadcrumbs->add([
         <tr>
             <th><?= __('Modified') ?></th>
             <td><?= h($employee->modified) ?></td>
-        </tr>
+        </tr> -->
     </table>
   </div>
   <div class="card-footer d-flex">
     <div class="">
       <?= $this->Form->postLink(
-          __('Delete'),
-          ['action' => 'delete', $employee->id],
-          ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'btn btn-danger']
+        __('Delete'),
+        ['action' => 'delete', $employee->id],
+        ['confirm' => __('Are you sure you want to delete # {0}?', $employee->id), 'class' => 'btn btn-danger']
       ) ?>
     </div>
     <div class="ml-auto">
@@ -290,21 +294,21 @@ $this->Breadcrumbs->add([
   </div>
 </div>
 
-<div class="view text card">
+<!-- <div class="view text card">
   <div class="card-header">
     <h3 class="card-title"><?= __('Contribution') ?></h3>
   </div>
   <div class="card-body">
     <?= $this->Text->autoParagraph(h($employee->contribution)); ?>
   </div>
-</div>
+</div> -->
 
-<div class="related related-addresses view card">
+<!--<div class="related related-addresses view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Addresses') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Addresses' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Addresses' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Addresses', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'Addresses', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -324,7 +328,7 @@ $this->Breadcrumbs->add([
               Addresses record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->addresses as $addresses) : ?>
         <tr>
             <td><?= h($addresses->id) ?></td>
@@ -334,9 +338,9 @@ $this->Breadcrumbs->add([
             <td><?= h($addresses->created) ?></td>
             <td><?= h($addresses->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Addresses', 'action' => 'view', $addresses->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Addresses', 'action' => 'edit', $addresses->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Addresses', 'action' => 'delete', $addresses->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $addresses->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'Addresses', 'action' => 'view', $addresses->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'Addresses', 'action' => 'edit', $addresses->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Addresses', 'action' => 'delete', $addresses->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $addresses->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -349,8 +353,8 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Children Details') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'ChildrenDetails' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'ChildrenDetails' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'ChildrenDetails', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'ChildrenDetails', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -371,7 +375,7 @@ $this->Breadcrumbs->add([
               Children Details record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->children_details as $childrenDetails) : ?>
         <tr>
             <td><?= h($childrenDetails->id) ?></td>
@@ -382,9 +386,9 @@ $this->Breadcrumbs->add([
             <td><?= h($childrenDetails->created) ?></td>
             <td><?= h($childrenDetails->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'ChildrenDetails', 'action' => 'view', $childrenDetails->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'ChildrenDetails', 'action' => 'edit', $childrenDetails->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'ChildrenDetails', 'action' => 'delete', $childrenDetails->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $childrenDetails->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'ChildrenDetails', 'action' => 'view', $childrenDetails->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'ChildrenDetails', 'action' => 'edit', $childrenDetails->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'ChildrenDetails', 'action' => 'delete', $childrenDetails->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $childrenDetails->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -393,12 +397,12 @@ $this->Breadcrumbs->add([
   </div>
 </div>
 
-<!-- <div class="related related-companies view card">
+ <div class="related related-companies view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Companies') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Companies' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Companies' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Companies', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'Companies', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -422,7 +426,7 @@ $this->Breadcrumbs->add([
               Companies record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->companies as $companies) : ?>
         <tr>
             <td><?= h($companies->id) ?></td>
@@ -436,9 +440,9 @@ $this->Breadcrumbs->add([
             <td><?= h($companies->created) ?></td>
             <td><?= h($companies->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Companies', 'action' => 'delete', $companies->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $companies->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'Companies', 'action' => 'view', $companies->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'Companies', 'action' => 'edit', $companies->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Companies', 'action' => 'delete', $companies->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $companies->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -447,12 +451,12 @@ $this->Breadcrumbs->add([
   </div>
 </div> -->
 
-<div class="related related-educations view card">
+<!-- <div class="related related-educations view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Educations') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Educations' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Educations' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Educations', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'Educations', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -474,7 +478,7 @@ $this->Breadcrumbs->add([
               Educations record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->educations as $educations) : ?>
         <tr>
             <td><?= h($educations->id) ?></td>
@@ -486,9 +490,9 @@ $this->Breadcrumbs->add([
             <td><?= h($educations->created) ?></td>
             <td><?= h($educations->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Educations', 'action' => 'view', $educations->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Educations', 'action' => 'edit', $educations->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Educations', 'action' => 'delete', $educations->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $educations->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'Educations', 'action' => 'view', $educations->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'Educations', 'action' => 'edit', $educations->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Educations', 'action' => 'delete', $educations->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $educations->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -501,8 +505,8 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Leaves') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Leaves' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Leaves' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'Leaves', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'Leaves', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -532,7 +536,7 @@ $this->Breadcrumbs->add([
               Leaves record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->leaves as $leaves) : ?>
         <tr>
             <td><?= h($leaves->id) ?></td>
@@ -552,9 +556,9 @@ $this->Breadcrumbs->add([
             <td><?= h($leaves->created) ?></td>
             <td><?= h($leaves->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Leaves', 'action' => 'view', $leaves->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Leaves', 'action' => 'edit', $leaves->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Leaves', 'action' => 'delete', $leaves->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $leaves->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'Leaves', 'action' => 'view', $leaves->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'Leaves', 'action' => 'edit', $leaves->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Leaves', 'action' => 'delete', $leaves->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $leaves->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -567,8 +571,8 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Next Of Kins') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'NextOfKins' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'NextOfKins' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'NextOfKins', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'NextOfKins', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -591,7 +595,7 @@ $this->Breadcrumbs->add([
               Next Of Kins record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->next_of_kins as $nextOfKins) : ?>
         <tr>
             <td><?= h($nextOfKins->id) ?></td>
@@ -604,9 +608,9 @@ $this->Breadcrumbs->add([
             <td><?= h($nextOfKins->created) ?></td>
             <td><?= h($nextOfKins->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'NextOfKins', 'action' => 'view', $nextOfKins->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'NextOfKins', 'action' => 'edit', $nextOfKins->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'NextOfKins', 'action' => 'delete', $nextOfKins->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $nextOfKins->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'NextOfKins', 'action' => 'view', $nextOfKins->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'NextOfKins', 'action' => 'edit', $nextOfKins->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'NextOfKins', 'action' => 'delete', $nextOfKins->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $nextOfKins->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -619,8 +623,8 @@ $this->Breadcrumbs->add([
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Other Departments') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'OtherDepartments' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'OtherDepartments' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'OtherDepartments', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'OtherDepartments', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -640,7 +644,7 @@ $this->Breadcrumbs->add([
               Other Departments record not found!
             </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->other_departments as $otherDepartments) : ?>
         <tr>
             <td><?= h($otherDepartments->id) ?></td>
@@ -650,9 +654,9 @@ $this->Breadcrumbs->add([
             <td><?= h($otherDepartments->created) ?></td>
             <td><?= h($otherDepartments->modified) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'OtherDepartments', 'action' => 'view', $otherDepartments->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'OtherDepartments', 'action' => 'edit', $otherDepartments->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'OtherDepartments', 'action' => 'delete', $otherDepartments->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $otherDepartments->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'OtherDepartments', 'action' => 'view', $otherDepartments->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'OtherDepartments', 'action' => 'edit', $otherDepartments->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'OtherDepartments', 'action' => 'delete', $otherDepartments->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $otherDepartments->id)]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -661,12 +665,12 @@ $this->Breadcrumbs->add([
   </div>
 </div>
 
-<div class="related related-transactions view card">
+<div class="related related-workDetails view card">
   <div class="card-header d-sm-flex">
-    <h3 class="card-title"><?= __('Related Transactions') ?></h3>
+    <h3 class="card-title"><?= __('Related Work Details') ?></h3>
     <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'Transactions' , 'action' => 'add',$employee->id], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'Transactions' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('New'), ['controller' => 'WorkDetails', 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'WorkDetails', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <div class="card-body table-responsive p-0">
@@ -674,59 +678,106 @@ $this->Breadcrumbs->add([
       <tr>
           <th><?= __('Id') ?></th>
           <th><?= __('Employee Id') ?></th>
-          <th><?= __('Company Id') ?></th>
-          <th><?= __('Date') ?></th>
-          <th><?= __('Basic Salary') ?></th>
-          <th><?= __('Domestic Allowance') ?></th>
-          <th><?= __('Housing Allowance') ?></th>
-          <th><?= __('Transport Allowance') ?></th>
-          <th><?= __('Utility Allowance') ?></th>
-          <th><?= __('Living In Allowance') ?></th>
-          <th><?= __('Medical Allowance') ?></th>
-          <th><?= __('Entertainment Allowance') ?></th>
-          <th><?= __('Leave Allowance') ?></th>
-          <th><?= __('Other Allowance') ?></th>
-          <th><?= __('Gross') ?></th>
-          <th><?= __('Paye') ?></th>
-          <th><?= __('Whl Cics') ?></th>
-          <th><?= __('Pension Deduction') ?></th>
-          <th><?= __('Other Deduction') ?></th>
-          <th><?= __('Total Deduction') ?></th>
-          <th><?= __('Net Pay') ?></th>
-          <th><?= __('Salary Advance') ?></th>
-          <th><?= __('Drivers Allowance') ?></th>
-          <th><?= __('Bar Account') ?></th>
-          <th><?= __('Union Due') ?></th>
-          <th><?= __('Tax Amount') ?></th>
-          <th><?= __('Arrears') ?></th>
-          <th><?= __('Sc Deduction') ?></th>
-          <th><?= __('Ileya Xmas Bonus') ?></th>
-          <th><?= __('End Of Year Bonus') ?></th>
-          <th><?= __('Service Charge') ?></th>
-          <th><?= __('Personal Loan') ?></th>
-          <th><?= __('Ctcs') ?></th>
-          <th><?= __('Bro Cics') ?></th>
-          <th><?= __('Surcharge') ?></th>
+          <th><?= __('Organization') ?></th>
+          <th><?= __('Department') ?></th>
+          <th><?= __('Job Title') ?></th>
+          <th><?= __('Job Class') ?></th>
+          <th><?= __('Start Date') ?></th>
+          <th><?= __('End Date') ?></th>
+          <th><?= __('Created') ?></th>
+          <th><?= __('Modified') ?></th>
           <th class="actions"><?= __('Actions') ?></th>
+      </tr>
+      <?php if (empty($employee->work_details)) { ?>
+        <tr>
+            <td colspan="11" class="text-muted">
+              Work Details record not found!
+            </td>
+        </tr>
+      <?php } else { ?>
+        <?php foreach ($employee->work_details as $workDetails) : ?>
+        <tr>
+            <td><?= h($workDetails->id) ?></td>
+            <td><?= h($workDetails->employee_id) ?></td>
+            <td><?= h($workDetails->organization) ?></td>
+            <td><?= h($workDetails->department) ?></td>
+            <td><?= h($workDetails->job_title) ?></td>
+            <td><?= h($workDetails->job_class) ?></td>
+            <td><?= h($workDetails->start_date) ?></td>
+            <td><?= h($workDetails->end_date) ?></td>
+            <td><?= h($workDetails->created) ?></td>
+            <td><?= h($workDetails->modified) ?></td>
+            <td class="actions">
+              <?= $this->Html->link(__('View'), ['controller' => 'WorkDetails', 'action' => 'view', $workDetails->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'WorkDetails', 'action' => 'edit', $workDetails->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'WorkDetails', 'action' => 'delete', $workDetails->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $workDetails->id)]) ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+      <?php } ?>
+    </table>
+  </div>
+</div> -->
+<div class="related related-transactions view card">
+  <div class="card-header d-sm-flex">
+    <h3 class="card-title"><?= __('Related Transactions') ?></h3>
+    <div class="card-toolbox">
+      <?= $this->Html->link(__('New'), ['controller' => 'Transactions', 'action' => 'add', $employee->id], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => 'Transactions', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+    </div>
+  </div>
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tr>        
+        <th><?= __('Date') ?></th>
+        <th><?= __('Basic Salary') ?></th>        
+        <th><?= __('Housing Allowance') ?></th>
+        <th><?= __('Transport Allowance') ?></th>
+        <th><?= __('Utility Allowance') ?></th>
+        <th><?= __('Domestic Allowance') ?></th>
+        <th><?= __('Living In Allowance') ?></th>
+        <th><?= __('Medical Allowance') ?></th>
+        <th><?= __('Entertainment Allowance') ?></th>
+        <th><?= __('Leave Allowance') ?></th>
+        <th><?= __('Other Allowance') ?></th>
+        <th><?= __('Gross') ?></th>
+        <th><?= __('Paye') ?></th>
+        <th><?= __('Whl Cics') ?></th>
+        <th><?= __('Pension Deduction') ?></th>
+        <th><?= __('Other Deduction') ?></th>
+        <th><?= __('Total Deduction') ?></th>
+        <th><?= __('Net Pay') ?></th>
+        <th><?= __('Salary Advance') ?></th>
+        <th><?= __('Drivers Allowance') ?></th>
+        <th><?= __('Bar Account') ?></th>
+        <th><?= __('Union Due') ?></th>
+        <th><?= __('Tax Amount') ?></th>
+        <th><?= __('Arrears') ?></th>
+        <th><?= __('Sc Deduction') ?></th>
+        <th><?= __('Ileya Xmas Bonus') ?></th>
+        <th><?= __('End Of Year Bonus') ?></th>
+        <th><?= __('Service Charge') ?></th>
+        <th><?= __('Personal Loan') ?></th>
+        <th><?= __('Ctcs') ?></th>
+        <th><?= __('Bro Cics') ?></th>
+        <th><?= __('Surcharge') ?></th>
+        <th class="actions"><?= __('Actions') ?></th>
       </tr>
       <?php if (empty($employee->transactions)) { ?>
         <tr>
-            <td colspan="36" class="text-muted">
-              Transactions record not found!
-            </td>
+          <td colspan="36" class="text-muted">
+            Transactions record not found!
+          </td>
         </tr>
-      <?php }else{ ?>
+      <?php } else { ?>
         <?php foreach ($employee->transactions as $transactions) : ?>
-        <tr>
-            <td><?= h($transactions->id) ?></td>
-            <td><?= h($transactions->employee_id) ?></td>
-            <td><?= h($transactions->company_id) ?></td>
-            <td><?= h($transactions->date) ?></td>
-            <td><?= h($transactions->basic_salary) ?></td>
-            <td><?= h($transactions->domestic_allowance) ?></td>
+          <tr>
+            <td><?= h($transactions->date->format('M-Y')) ?></td>
+            <td><?= h($transactions->basic_salary) ?></td>            
             <td><?= h($transactions->housing_allowance) ?></td>
             <td><?= h($transactions->transport_allowance) ?></td>
             <td><?= h($transactions->utility_allowance) ?></td>
+            <td><?= h($transactions->domestic_allowance) ?></td>
             <td><?= h($transactions->living_in_allowance) ?></td>
             <td><?= h($transactions->medical_allowance) ?></td>
             <td><?= h($transactions->entertainment_allowance) ?></td>
@@ -754,68 +805,13 @@ $this->Breadcrumbs->add([
             <td><?= h($transactions->bro_cics) ?></td>
             <td><?= h($transactions->surcharge) ?></td>
             <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'Transactions', 'action' => 'view', $transactions->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'Transactions', 'action' => 'edit', $transactions->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $transactions->id)]) ?>
+              <?= $this->Html->link(__('View'), ['controller' => 'Transactions', 'action' => 'view', $transactions->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => 'Transactions', 'action' => 'edit', $transactions->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $transactions->id)]) ?>
             </td>
-        </tr>
+          </tr>
         <?php endforeach; ?>
       <?php } ?>
     </table>
   </div>
 </div>
-
-<div class="related related-workDetails view card">
-  <div class="card-header d-sm-flex">
-    <h3 class="card-title"><?= __('Related Work Details') ?></h3>
-    <div class="card-toolbox">
-      <?= $this->Html->link(__('New'), ['controller' => 'WorkDetails' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
-      <?= $this->Html->link(__('List '), ['controller' => 'WorkDetails' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
-    </div>
-  </div>
-  <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap">
-      <tr>
-          <th><?= __('Id') ?></th>
-          <th><?= __('Employee Id') ?></th>
-          <th><?= __('Organization') ?></th>
-          <th><?= __('Department') ?></th>
-          <th><?= __('Job Title') ?></th>
-          <th><?= __('Job Class') ?></th>
-          <th><?= __('Start Date') ?></th>
-          <th><?= __('End Date') ?></th>
-          <th><?= __('Created') ?></th>
-          <th><?= __('Modified') ?></th>
-          <th class="actions"><?= __('Actions') ?></th>
-      </tr>
-      <?php if (empty($employee->work_details)) { ?>
-        <tr>
-            <td colspan="11" class="text-muted">
-              Work Details record not found!
-            </td>
-        </tr>
-      <?php }else{ ?>
-        <?php foreach ($employee->work_details as $workDetails) : ?>
-        <tr>
-            <td><?= h($workDetails->id) ?></td>
-            <td><?= h($workDetails->employee_id) ?></td>
-            <td><?= h($workDetails->organization) ?></td>
-            <td><?= h($workDetails->department) ?></td>
-            <td><?= h($workDetails->job_title) ?></td>
-            <td><?= h($workDetails->job_class) ?></td>
-            <td><?= h($workDetails->start_date) ?></td>
-            <td><?= h($workDetails->end_date) ?></td>
-            <td><?= h($workDetails->created) ?></td>
-            <td><?= h($workDetails->modified) ?></td>
-            <td class="actions">
-              <?= $this->Html->link(__('View'), ['controller' => 'WorkDetails', 'action' => 'view', $workDetails->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Html->link(__('Edit'), ['controller' => 'WorkDetails', 'action' => 'edit', $workDetails->id], ['class'=>'btn btn-xs btn-outline-primary']) ?>
-              <?= $this->Form->postLink(__('Delete'), ['controller' => 'WorkDetails', 'action' => 'delete', $workDetails->id], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $workDetails->id)]) ?>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-      <?php } ?>
-    </table>
-  </div>
-</div>
-

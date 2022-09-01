@@ -29,7 +29,7 @@
                   <?php echo $this->Html->image('premierhotel_logo2.jpeg', array('class' => 'img-squre', 'alt' => 'User Image', 'width' => '150px')); ?> EMPLOYEE PAY ADVICE FOR <?= h(strtoupper($company->date->format('M, Y'))) ?>
                 </h6>
               </div>
-              <table class="table-responsive datatable">
+              <table class="table-responsive">
                 <tbody>
                   <tr>
                     <td><?= h("Name of Staff") ?></td>

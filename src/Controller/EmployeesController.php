@@ -23,9 +23,12 @@ class EmployeesController extends AppController
             // 'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users'],
             'order' => [
                 'Employees.id' => 'asc'
-            ]
+            ],
+            'limit' => 200
         ];
         $employees = $this->paginate($this->Employees);
+
+        // debug($this->request->getAttribute('paging'));
 
         $this->set(compact('employees'));
     }
@@ -40,7 +43,7 @@ class EmployeesController extends AppController
     public function view($id = null)
     {
         $employee = $this->Employees->get($id, [
-            'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions','WorkDetails'],
+            'contain' => ['ServiceCharges','Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users', 'Addresses', 'ChildrenDetails', 'Companies', 'Educations', 'Leaves', 'NextOfKins', 'OtherDepartments', 'Transactions','WorkDetails'],
         ]);
 
         $this->set(compact('employee'));

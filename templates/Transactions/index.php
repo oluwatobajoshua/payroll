@@ -13,7 +13,7 @@ $this->Breadcrumbs->add([
 ]);
 ?>
 
-<div class="card card-primary card-outline">
+<div class="invoice p-3 card card-primary card-outline">
     <div class="card-header d-sm-flex">
         <h2 class="card-title">
             <!-- -->
@@ -30,10 +30,10 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+        <table class="table table-hover text-nowrap datatable">
             <thead>
                 <tr>
-                    <th scope="col"><?= $this->Paginator->sort('') ?></th>
+                    <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('employee_id') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('basic_salary') ?></th>
@@ -69,7 +69,7 @@ $this->Breadcrumbs->add([
             <tbody>
                 <?php foreach ($transactions as $transaction) : ?>
                     <tr>
-                        <td></td>
+                        <td><?= h($transaction->id) ?></td>
                         <td><?= $transaction->has('employee') ? $this->Html->link($transaction->employee->full_name, ['controller' => 'Employees', 'action' => 'view', $transaction->employee->id]) : '' ?></td>
                         <td><?= h($transaction->date->format('M-Y')) ?></td>
                         <td><?= $this->Number->format($transaction->basic_salary, ['places' => 2, 'pattern' => 0, 000.00, 'before' => '₦']) ?></td>

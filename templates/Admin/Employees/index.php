@@ -4,6 +4,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Employee[]|\Cake\Collection\CollectionInterface $employees
  */
+// debug(count($employees));
 ?>
 <?php
 $this->assign('title', __('Employees'));
@@ -27,8 +28,8 @@ $this->Breadcrumbs->add([
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+    <div class="card-body">
+        <table id="example1" class="table table-hover text-nowrap">
             <thead>
               <tr>
                 <th scope="col"><?= $this->Paginator->sort('Id') ?></th>
@@ -74,7 +75,7 @@ $this->Breadcrumbs->add([
                   <th scope="col"><?= $this->Paginator->sort('salary_advance_inst') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('drivers_allowance') ?></th>
                   <th scope="col"><?= $this->Paginator->sort('bro_HCICS') ?></th>-->
-                <th scope="col" class="actions text-center"><?= __('Actions') ?></th>
+                <th scope="col" class="actions text-center no-print"><?= __('Actions') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -124,7 +125,7 @@ $this->Breadcrumbs->add([
                   <td><?= $this->Number->format($employee->salary_advance_inst) ?></td>
                   <td><?= $this->Number->format($employee->drivers_allowance) ?></td>
                   <td><?= $this->Number->format($employee->bro_HCICS) ?></td>-->
-                  <td class="actions text-right">
+                  <td class="actions text-right no-print">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->name_desc), 'class' => 'btn btn-xs btn-outline-danger', 'escape' => false]) ?>
@@ -147,6 +148,49 @@ $this->Breadcrumbs->add([
             <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
             <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
         </ul>
-    </div>
-    <!-- /.card-footer -->
+    </div>  
+    <!-- /.card-footer
 </div>
+
+<?php $this->start('scriptBottom'); ?>
+<script>
+  $(function() {
+
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
+
+    // stockTotal();
+
+  })
+
+  // function stockTotal() {
+  //   var productUnit1 = $('#stock-details-0-product-unit-id option:selected').text();
+  //   var productUnit = productUnit1.split("-")[0];
+  //   var qty = $('#qty').val();
+  //   var liters = productUnit * qty;
+  //   var quantity = $('#stock-details-0-quantity').val(liters);
+  //   var fee = parseFloat($('#fee').val())
+  //   var supplyAmount = parseFloat($('#supply-amount').val())
+  //   var total = (qty * supplyAmount) + fee;
+  //   $('#amount').val(total.toFixed(2));
+  //   var costPrice = total / liters;
+  //   $('#stock-details-0-cost-price').val(costPrice.toFixed(2));
+  //   //console.log(costPrice);
+  //   /*
+  //   var qty = parseFloat($('#order-details-' + i + '-qty').val())
+  //   var unitPrice = parseFloat($('#order-details-' + i + '-unit-price').val())
+  //   var discount1 = $('#order-details-' + i + '-discount-id option:selected').text();
+  //   var discount = discount1.replace("%", " ");
+  //   var orderItemTotal = qty * unitPrice
+  //   var orderItemDiscount = orderItemTotal * (discount / 100)
+  //   var total = orderItemTotal - orderItemDiscount
+  //   $('#order-details-' + i + '-total').val(total.toFixed(2))
+  //   $('#total').val(stockTotal.toFixed(2));
+  //   */
+  // }
+</script>
+<?php $this->end(); ?>
