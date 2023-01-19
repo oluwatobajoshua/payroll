@@ -150,6 +150,11 @@ class DiariesTable extends Table
         $rules->add($rules->existsIn('hall_id', 'Halls'), ['errorField' => 'hall_id']);
         $rules->add($rules->existsIn('status_id', 'Statuses'), ['errorField' => 'status_id']);
 
+        $rules->add($rules->isUnique(
+            ['date', 'hall_id'],
+            'This hall is already booked for this date.'
+        ));
+
         return $rules;
     }
 }

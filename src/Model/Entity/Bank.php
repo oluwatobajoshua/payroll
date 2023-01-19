@@ -36,4 +36,12 @@ class Bank extends Entity
         'modified' => true,
         'employees' => true,
     ];
+
+    protected function _getBankDesc()
+    {
+        return
+            $this->name .
+            ', ' .
+            $this->branch;
+    }
 }

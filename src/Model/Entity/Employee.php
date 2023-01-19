@@ -200,6 +200,7 @@ class Employee extends Entity
         'status' => true,
         'user' => true,
         'addresses' => true,
+        'loans' => true,
         'children_details' => true,
         'companies' => true,
         'educations' => true,

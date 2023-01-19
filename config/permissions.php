@@ -151,6 +151,13 @@ return [
             'bypassAuth' => true,
         ],
         [
+            'role' => 'user',
+            'controller' => 'Transactions',
+            'action' => ['view'],
+            // 'allowed' => true,
+            'bypassAuth' => true,
+        ],
+        [
             'role' => '*',
             'plugin' => 'DebugKit',
             'controller' => '*',

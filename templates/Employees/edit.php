@@ -49,33 +49,33 @@ $this->Breadcrumbs->add([
               echo $this->Form->control('first_name');
               echo $this->Form->control('last_name');
               echo $this->Form->control('other_name');
-              // echo $this->Form->control('gender_id', ['options' => $genders]);
-              // echo $this->Form->control('marital_status_id', ['options' => $maritalStatuses]);
-              // echo $this->Form->control('state_id', ['options' => $states]);
-              // echo $this->Form->control('local_id', ['options' => $locals]);
-              // echo $this->Form->control('religion_id', ['options' => $religions]);
-              // echo $this->Form->control('home_town');
-              // echo $this->Form->control('physical_posture_id', ['options' => $physicalPostures]);
-              // echo $this->Form->control('highest_education_id', ['options' => $highestEducations]);
-              // echo $this->Form->control('years_of_experience');
-              // echo $this->Form->control('branch_id', ['options' => $branches, 'empty' => true]);
+              echo $this->Form->control('gender_id', ['options' => $genders]);
+              echo $this->Form->control('marital_status_id', ['options' => $maritalStatuses]);
+              echo $this->Form->control('state_id', ['options' => $states]);
+              echo $this->Form->control('local_id', ['options' => $locals]);
+              echo $this->Form->control('religion_id', ['options' => $religions]);
+              echo $this->Form->control('home_town');
+              echo $this->Form->control('physical_posture_id', ['options' => $physicalPostures]);
+              echo $this->Form->control('highest_education_id', ['options' => $highestEducations]);
+              echo $this->Form->control('years_of_experience');
+              echo $this->Form->control('branch_id', ['options' => $branches, 'empty' => true]);
               echo $this->Form->control('grade_id', ['options' => $grades, 'empty' => true]);
               echo $this->Form->control('section_id', ['options' => $sections, 'empty' => true]);
               echo $this->Form->control('cadre_id', ['options' => $cadres]);
               echo $this->Form->control('phone');
               echo $this->Form->control('email');
-              // echo $this->Form->control('reporting_to');
-              // echo $this->Form->control('name_of_spouse');
-              // echo $this->Form->control('designation_id', ['options' => $designations, 'empty' => true]);
-              // echo $this->Form->control('date_of_birth');
-              // echo $this->Form->control('date_joined', ['empty' => true]);
+              echo $this->Form->control('reporting_to');
+              echo $this->Form->control('name_of_spouse');
+              echo $this->Form->control('designation_id', ['options' => $designations, 'empty' => true]);
+              echo $this->Form->control('date_of_birth');
+              echo $this->Form->control('date_joined', ['empty' => true]);
               echo $this->Form->control('bank_id', ['options' => $banks]);
               echo $this->Form->control('acct_no');
               echo $this->Form->control('service_charge_bank', ['options' => $serviceCharges]);
               echo $this->Form->control('service_charge_number');
               ?>
             </div>
-            <!-- <h3>Address Information</h3>
+            <h3>Address Information</h3>
             <div class="row">
               <?php
               $this->Form->setTemplates([
@@ -171,7 +171,7 @@ $this->Breadcrumbs->add([
               ]);
               echo $this->Form->control('contribution');
               ?>
-            </div> -->
+            </div>
             <h3>Payment Information</h3>
             <div class="row">
               <?php

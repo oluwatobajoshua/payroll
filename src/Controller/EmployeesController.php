@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\Query;
+
 /**
  * Employees Controller
  *
@@ -19,7 +21,7 @@ class EmployeesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Cadres','Sections','Grades','Statuses'],
+            'contain' => ['Cadres','Sections','Grades','Statuses','Loans' => function(Query $q){return $q->where(['status_id'=>1]);}],
             // 'contain' => ['Branches', 'Grades', 'Sections', 'Cadres', 'Banks', 'Genders', 'Religions', 'Locals', 'States', 'PhysicalPostures', 'MaritalStatuses', 'HighestEducations', 'Designations', 'Statuses', 'Users'],
             'order' => [
                 'Employees.id' => 'asc'
@@ -29,6 +31,7 @@ class EmployeesController extends AppController
         $employees = $this->paginate($this->Employees);
 
         // debug($this->request->getAttribute('paging'));
+        // debug($employees->first()->loans[0]->deduction);
 
         $this->set(compact('employees'));
     }

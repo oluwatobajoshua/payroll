@@ -71,6 +71,36 @@ return static function (RouteBuilder $routes) {
             $routes->fallbacks(DashedRoute::class);
         });
 
+        $builder->prefix('Auction', function (RouteBuilder $routes) {
+
+            $routes->connect('/', ['controller' => 'Auctions', 'action' => 'index']);
+
+            // All routes here will be prefixed with `/admin`, and
+            // have the `'prefix' => 'Admin'` route element added that
+            // will be required when generating URLs for these routes
+            $routes->fallbacks(DashedRoute::class);
+        });
+
+        $builder->prefix('bidding', function (RouteBuilder $routes) {
+
+            $routes->connect('/', ['controller' => 'bidding', 'action' => 'index']);
+
+            // All routes here will be prefixed with `/admin`, and
+            // have the `'prefix' => 'Admin'` route element added that
+            // will be required when generating URLs for these routes
+            $routes->fallbacks(DashedRoute::class);
+        });
+
+        $builder->prefix('Payroll', function (RouteBuilder $routes) {
+
+            $routes->connect('/', ['controller' => 'Employees', 'action' => 'index']);
+
+            // All routes here will be prefixed with `/admin`, and
+            // have the `'prefix' => 'Admin'` route element added that
+            // will be required when generating URLs for these routes
+            $routes->fallbacks(DashedRoute::class);
+        });
+
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */

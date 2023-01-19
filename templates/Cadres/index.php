@@ -32,10 +32,10 @@ $this->Breadcrumbs->add([
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
+                    <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('tax_due') ?></th>
                     <th><?= $this->Paginator->sort('union_due') ?></th>
-                    <th><?= $this->Paginator->sort('pension') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
+                    <th><?= $this->Paginator->sort('pension') ?></th>                    
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -45,10 +45,11 @@ $this->Breadcrumbs->add([
                 <?php foreach ($cadres as $cadre) : ?>
                     <tr>
                         <td><?= $this->Number->format($cadre->id) ?></td>
+                        <td><?= h($cadre->name) ?></td>
                         <td><?= $this->Number->format($cadre->tax_due) ?></td>
                         <td><?= $this->Number->format($cadre->union_due) ?></td>
                         <td><?= $this->Number->format($cadre->pension) ?></td>
-                        <td><?= h($cadre->name) ?></td>
+                        
                         <td><?= h($cadre->created) ?></td>
                         <td><?= h($cadre->modified) ?></td>
                         <td class="actions">

@@ -42,7 +42,7 @@ class BanksTable extends Table
         parent::initialize($config);
 
         $this->setTable('banks');
-        $this->setDisplayField('name');
+        $this->setDisplayField('bank_desc');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

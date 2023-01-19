@@ -9,7 +9,7 @@ $(function () {
       autoWidth: false,
       paging: true,
       lengthMenu: [[10, 25, 500, -1], [10, 25, 500, "All"]],
-      buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      buttons: ["copy", "csv", "excel", "pdf", "print"],
     })
     .buttons()
     .container()
@@ -25,8 +25,9 @@ $(function () {
     responsive: true,
   });
 
+  //transactions
   if ($("#transactions").attr("id")) {
-    console.log($("#transactions").attr("id"));
+    // console.log($("#transactions").attr("id"));
     var employeeId = $("#employee-id").val();
 
     var cadre = $.ajax({
@@ -53,10 +54,10 @@ $(function () {
 
         // $transaction->ctcs  = $employeed->whl_cics + $employeed->bro_cics;
         $("#basic-salary").change(function (e) {
-          update();
+          TransactionUpdate();
         });
 
-        function update() {
+        function TransactionUpdate() {
           // $union_due          = $employeed->salary/12 *($employeed->cadre->union_due * 0.01);
           // $pension            = ($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12*($employeed->cadre->pension * 0.01);
           // $paye               = $employeed->salary/12 *($employeed->cadre->tax_due * 0.01);
@@ -86,6 +87,7 @@ $(function () {
     });
   }
 
+  //state and local government depended drop down
   $("#state-id").change(function (e) {
     var stateId = $("#state-id option:selected").val();
     e.preventDefault();
@@ -133,4 +135,52 @@ $(function () {
       },
     });
   });
+
+  //locan calculator
+  $("#rate").change(function (e) {    
+    e.preventDefault();
+
+    // alert('alert');
+
+    var data = $('#loan').serialize();
+
+    var object = {"principal":$('#principal').val(),"tenor":$('#tenor').val(),"rate":$('#rate').val()};
+
+    // console.log(data);
+
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "/loans/calculate",
+      data: {
+        data: object,
+      },
+      beforeSend: function (xhr) {
+        // Add this line
+        xhr.setRequestHeader(
+          "X-CSRF-Token",
+          $('meta[name="csrfToken"]').attr("content")
+        );
+        //console.log(xhr);
+      },
+      success: function (status) {
+        //remove the value loading on success
+        console.log('status')
+        console.log(status)
+        console.log(status.principal)
+        var interest = status.interest;
+        var total =  status.total;
+        var deduction = status.deduction;
+        $('#interest').val(interest.toFixed(2));
+        $('#total').val(total.toFixed(2));
+        $('#deduction').val(deduction.toFixed(2));
+      
+      },
+      error: function (xhr, textStatus, error) {
+        console.log(xhr);
+        console.log(textStatus);
+        console.log(error);
+      },
+    });
+  });  
 });

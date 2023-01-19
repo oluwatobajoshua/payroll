@@ -28,7 +28,7 @@ $this->Breadcrumbs->add([
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body">
+    <div class="card-body table-responsive p-0">
         <table id="example1" class="table table-hover text-nowrap datatable">
             <thead>
               <tr>
@@ -125,7 +125,7 @@ $this->Breadcrumbs->add([
                   <td><?= $this->Number->format($employee->salary_advance_inst) ?></td>
                   <td><?= $this->Number->format($employee->drivers_allowance) ?></td>
                   <td><?= $this->Number->format($employee->bro_HCICS) ?></td>-->
-                  <td class="actions text-right no-print">
+                  <td class="actions text-right">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $employee->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $employee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $employee->name_desc), 'class' => 'btn btn-xs btn-outline-danger', 'escape' => false]) ?>

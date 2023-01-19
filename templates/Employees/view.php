@@ -57,19 +57,19 @@ $this->Breadcrumbs->add([
         <th><?= __('Utility Allowance') ?></th>
         <td><?= $this->Number->format($employee->utility_allowance) ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('Email') ?></th>
             <td><?= h($employee->email) ?></td>
-        </tr> -->
+        </tr>
       
-      <!--<tr>
+      <tr>
             <th><?= __('Reporting To') ?></th>
             <td><?= h($employee->reporting_to) ?></td>
         </tr>
          <tr>
             <th><?= __('Name Of Spouse') ?></th>
             <td><?= h($employee->name_of_spouse) ?></td>
-        </tr> -->
+        </tr>
       <tr>
         <th><?= __('Grade') ?></th>
         <td><?= $employee->has('grade') ? $this->Html->link($employee->grade->name, ['controller' => 'Grades', 'action' => 'view', $employee->grade->id]) : '' ?></td>
@@ -102,11 +102,11 @@ $this->Breadcrumbs->add([
         <th><?= __('Gender') ?></th>
         <td><?= $employee->has('gender') ? $this->Html->link($employee->gender->name, ['controller' => 'Genders', 'action' => 'view', $employee->gender->id]) : '' ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('Religion') ?></th>
             <td><?= $employee->has('religion') ? $this->Html->link($employee->religion->name, ['controller' => 'Religions', 'action' => 'view', $employee->religion->id]) : '' ?></td>
-        </tr> -->
-      <!-- <tr>
+        </tr>
+      <tr>
             <th><?= __('Local') ?></th>
             <td><?= $employee->has('local') ? $this->Html->link($employee->local->name, ['controller' => 'Locals', 'action' => 'view', $employee->local->id]) : '' ?></td>
         </tr>
@@ -129,15 +129,15 @@ $this->Breadcrumbs->add([
         <tr>
             <th><?= __('Highest Education') ?></th>
             <td><?= $employee->has('highest_education') ? $this->Html->link($employee->highest_education->name, ['controller' => 'HighestEducations', 'action' => 'view', $employee->highest_education->id]) : '' ?></td>
-        </tr> -->
+        </tr>
       <tr>
         <th><?= __('Housing Upfront') ?></th>
         <td><?= h($employee->housing_upfront) ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('Designation') ?></th>
             <td><?= $employee->has('designation') ? $this->Html->link($employee->designation->name, ['controller' => 'Designations', 'action' => 'view', $employee->designation->id]) : '' ?></td>
-        </tr> -->
+        </tr>
       <tr>
         <th><?= __('Status') ?></th>
         <td><?= $employee->has('status') ? $this->Html->link($employee->status->name, ['controller' => 'Statuses', 'action' => 'view', $employee->status->id]) : '' ?></td>
@@ -162,10 +162,10 @@ $this->Breadcrumbs->add([
         <th><?= __('Pension Control') ?></th>
         <td><?= h($employee->pension_control) ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('User') ?></th>
             <td><?= $employee->has('user') ? $this->Html->link($employee->user->username, ['controller' => 'Users', 'action' => 'view', $employee->user->id]) : '' ?></td>
-        </tr> -->
+        </tr>
       <tr>
         <th><?= __('Id') ?></th>
         <td><?= $this->Number->format($employee->id) ?></td>
@@ -174,10 +174,10 @@ $this->Breadcrumbs->add([
         <th><?= __('Staff No') ?></th>
         <td><?= $this->Number->format($employee->staff_no) ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('Years Of Experience') ?></th>
             <td><?= $this->Number->format($employee->years_of_experience) ?></td>
-        </tr> -->
+        </tr>
 
 
       <tr>
@@ -261,7 +261,7 @@ $this->Breadcrumbs->add([
         <th><?= __('Bro Cics') ?></th>
         <td><?= $this->Number->format($employee->bro_cics) ?></td>
       </tr>
-      <!-- <tr>
+      <tr>
             <th><?= __('Date Of Birth') ?></th>
             <td><?= h($employee->date_of_birth) ?></td>
         </tr>
@@ -276,7 +276,7 @@ $this->Breadcrumbs->add([
         <tr>
             <th><?= __('Modified') ?></th>
             <td><?= h($employee->modified) ?></td>
-        </tr> -->
+        </tr>
     </table>
   </div>
   <div class="card-footer d-flex">
@@ -303,7 +303,7 @@ $this->Breadcrumbs->add([
   </div>
 </div> -->
 
-<!--<div class="related related-addresses view card">
+<div class="related related-addresses view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Addresses') ?></h3>
     <div class="card-toolbox">
@@ -449,9 +449,9 @@ $this->Breadcrumbs->add([
       <?php } ?>
     </table>
   </div>
-</div> -->
+</div>
 
-<!-- <div class="related related-educations view card">
+<div class="related related-educations view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Educations') ?></h3>
     <div class="card-toolbox">
@@ -717,7 +717,7 @@ $this->Breadcrumbs->add([
       <?php } ?>
     </table>
   </div>
-</div> -->
+</div>
 <div class="related related-transactions view card">
   <div class="card-header d-sm-flex">
     <h3 class="card-title"><?= __('Related Transactions') ?></h3>

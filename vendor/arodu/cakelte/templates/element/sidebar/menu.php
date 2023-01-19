@@ -207,6 +207,12 @@
     </li>
   </ul>
 </li>
+<li class="nav-item">
+  <a href="<?php echo $this->Url->build('/diaries'); ?>" class="nav-link">
+    <i class="far fa-circle nav-icon"></i>
+    <p>Booking Diary</p>
+  </a>
+</li>
 
 <!--<li class="nav-item">-->
 <!--  <a href="#" class="nav-link">-->

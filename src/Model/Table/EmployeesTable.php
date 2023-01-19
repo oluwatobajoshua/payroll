@@ -136,6 +136,9 @@ class EmployeesTable extends Table
         $this->hasMany('Addresses', [
             'foreignKey' => 'employee_id',
         ]);
+        $this->hasMany('Loans', [
+            'foreignKey' => 'employee_id',
+        ]);
         $this->hasMany('ChildrenDetails', [
             'foreignKey' => 'employee_id',
         ]);

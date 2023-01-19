@@ -25,12 +25,13 @@ $this->Breadcrumbs->add([
             ]); ?>
             <!-- <?= $this->Html->link(__('New Transaction'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?> -->
             <?php echo $this->Html->link(__('Employees'), ['controller' => 'Employees', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm', 'rel' => 'tooltip', 'title' => 'Go back to employee & select view to add a new transaction']) ?>
-            <?= $this->Form->postLink(__('New Month'), ['controller' => 'transactions', 'action' => 'newMonth'], ['confirm' => __('You are about to begin {0}?', 'New Month'), 'class' => 'btn btn-primary btn-sm']) ?>
+            <?= $this->Form->postLink(__('New Month'), ['controller' => 'transactions', 'action' => 'newMonth'], ['confirm' => __('You are about to begin {0}?', 'New Month'), 'class' => 'btn btn-success btn-sm']) ?>
+            <?= $this->Form->postLink(__('Reset'), ['controller' => 'transactions', 'action' => 'deleteAll'], ['confirm' => __('You are about to reset {0}?', 'all transaction'), 'class' => 'btn btn-danger btn-sm']) ?>
         </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap datatable">
+        <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
                     <th scope="col"><?= $this->Paginator->sort('id') ?></th>

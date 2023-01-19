@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 use Cake\I18n\Date;
+use Cake\ORM\Query;
 use Cake\I18n\FrozenTime;
 
 /**
@@ -100,7 +101,7 @@ class TransactionsController extends AppController
         $trans = $this->Transactions->find()->where(['date' => new FrozenTime($company->date)])->count();
 
         if(!$trans){
-            $employees = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections'])->where(['Employees.status_id' => 1]);        
+            $employees = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections','Loans' => function(Query $q){return $q->where(['status_id'=>1]);}])->where(['Employees.status_id' => 1]);
 
             foreach($employees as $employeed){
                 if($employeed->section){
@@ -117,11 +118,12 @@ class TransactionsController extends AppController
                 $transaction->entertainment_allowance   = round($employeed->entertainment_allowance/12,2);
                 $transaction->medical_allowance         = round($employeed->medical_allowance/12,2); 
                 $transaction->other_allowance           = round($employeed->other_allowance/12,2);
+                $transaction->salary_advance            = round((float)$employeed->salary_advance_rep,2);
                 $transaction->union_due                 = round($employeed->salary/12 *($employeed->cadre->union_due * 0.01),2);
                 $transaction->pension_deduction         = round((($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12)*($employeed->cadre->pension * 0.01),2);
                 $transaction->paye                      = round(($employeed->salary/12*($employeed->cadre->tax_due * 0.01)),2); 
                 $transaction->ctcs                      = round($employeed->whl_cics + $employeed->bro_cics,2);            
-                $transaction->personal_loan             = round((int)$employeed->pers_loan_rep,2); 
+                $transaction->personal_loan             = round($employeed->loans ? (float)$employeed->loans[0]->deduction : 0,2); 
                 $transaction->gross                     = round(($transaction->basic_salary + $transaction->transport_allowance + + $transaction->leave_allowance + 
                                                                 $transaction->housing_allowance + $transaction->utility_allowance + $transaction->entertainment_allowance + 
                                                                 $transaction->medical_allowance + $transaction->arrears + $transaction->other_allowance),2);            
@@ -132,7 +134,6 @@ class TransactionsController extends AppController
                 }
 
                 // debug($transaction);
-
                 if ($this->Transactions->save($transaction)) {                
                     $this->Flash->success(__('The salary for {0} has been saved', $employeed->full_name));
                 }
@@ -171,12 +172,13 @@ class TransactionsController extends AppController
             // debug($this->request->getData()); 
             return $this->redirect(['action'=> 'add', $this->request->getData('emp')]);  
         }         
-        $employeed = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections'])->where(['Employees.id' => $employeeid,'Employees.status_id' => 1])->first(); 
+        $employeed = $this->Transactions->Employees->find('all')->contain(['Cadres','Sections','Loans' => function(Query $q){return $q->where(['status_id'=>1]);}])->where(['Employees.id' => $employeeid,'Employees.status_id' => 1])->first(); 
+        debug(count($employeed->loans));
         $employees = $this->Transactions->Employees->find('list')->contain(['Cadres','Sections']);           
 
         // foreach($employees as $employeed){
             if($employeed->section){
-                //debug($employeed);
+                // debug($employeed);
                 $transaction = $this->Transactions->newEntity(['associated' => 'Employees']);
                 $transaction->date                      = new FrozenTime($company->date);  
                 $transaction->employee_id               = $employeed->id;   
@@ -187,11 +189,12 @@ class TransactionsController extends AppController
                 $transaction->entertainment_allowance   = round($employeed->entertainment_allowance/12,2);
                 $transaction->medical_allowance         = round($employeed->medical_allowance/12,2); 
                 $transaction->other_allowance           = round($employeed->other_allowance/12,2);
+                $transaction->salary_advance            = round((float)$employeed->salary_advance_rep,2);
                 $transaction->union_due                 = round($employeed->salary/12 *($employeed->cadre->union_due * 0.01),2);
                 $transaction->pension_deduction         = round((($employeed->salary + $employeed->housing_allowance + $employeed->transport_allowance)/12)*($employeed->cadre->pension * 0.01),2);
                 $transaction->paye                      = round(($employeed->salary/12*($employeed->cadre->tax_due * 0.01)),2); 
                 $transaction->ctcs                      = round($employeed->whl_cics + $employeed->bro_cics,2);            
-                $transaction->personal_loan             = round((int)$employeed->pers_loan_rep,2); 
+                $transaction->personal_loan             = round((count($employeed->loans) > 0) ? (float)$employeed->loans[0]->deduction : 0.00,2); 
                 $transaction->gross                     = round(($transaction->basic_salary + $transaction->transport_allowance + + $transaction->leave_allowance + 
                                                                 $transaction->housing_allowance + $transaction->utility_allowance + $transaction->entertainment_allowance + 
                                                                 $transaction->medical_allowance + $transaction->arrears + $transaction->other_allowance),2);            
@@ -209,7 +212,19 @@ class TransactionsController extends AppController
             $transaction->section_id                = $employeed->section->id;
             
             // debug($transaction);
-            if ($this->Transactions->save($transaction)) {                
+            if ($this->Transactions->save($transaction)) { 
+                //Update loan status. 
+                if(count($employeed->loans) > 0){
+                $loan = $this->Transactions->Employees->Loans->get($employeed->loans[0]->id);
+                if($loan->payment_count < $loan->tenor){
+                   $loan->payment_count ++; 
+                }else{
+                    $loan->status_id = 7;
+                }
+                $this->Transactions->Employees->Loans->save($loan);
+            }                
+                
+
                 $this->Flash->success(__('The {0} has been saved', $employeed->full_name));
             }else{
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', $employeed->full_name));
@@ -287,6 +302,28 @@ class TransactionsController extends AppController
         $transaction = $this->Transactions->get($id);
         if ($this->Transactions->delete($transaction)) {
             $this->Flash->success(__('The transaction has been deleted.'));
+        } else {
+            $this->Flash->error(__('The transaction could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Transaction id.
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function deleteAll()
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $company = $this->Transactions->Companies->get(1);
+        $transactions = $this->Transactions->find()->where(['date' => new FrozenTime($company->date)]);
+        // debug($transactions); exit;
+        if ($this->Transactions->deleteAll($transactions->all()->toList())) {
+            $this->Flash->success(__('Reset completed, click on New Month start all over'));
         } else {
             $this->Flash->error(__('The transaction could not be deleted. Please, try again.'));
         }
